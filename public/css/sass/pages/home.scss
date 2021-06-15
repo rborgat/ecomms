@@ -1,0 +1,159 @@
+.shop{
+    display: flex;
+    justify-content: space-around; 
+    
+} 
+.section-home-1{
+    background-color: $color-gold-primary; 
+    height: 59rem;
+    border-radius: .81rem;
+    display: flex;
+    width: 90%;
+     
+    @include respond("ipad"){
+        flex-direction: column;
+        height: 100rem;
+        align-items: center;
+        text-align: center;
+        justify-content: space-evenly; 
+    }
+ 
+    &__img-box{
+        width: 40rem;
+        height: 49rem;
+        overflow: hidden;
+        @include respond("ipad"){
+           width: 25rem;
+           height: 30rem;
+        }
+        img{
+            width: 40rem;
+            height:51rem;
+
+            @include respond("ipad"){
+                width: 100%;
+                height: 100%;
+             }
+        }
+
+    }
+
+   &__product-gallery{
+    flex: 0 0 50%;
+    display: flex;
+    margin-left: 16rem;
+    align-items: flex-end;
+    @include respond("ipad"){
+        margin-left: 0;
+        flex: 0 0 0;
+    }
+   }
+
+   &__product-info{
+       align-self: center;
+       margin-top: -8rem;
+       @include respond("ipad"){
+        margin-top: -2rem;
+       
+      
+    }
+       .item-description-para{
+        color: $color-light-primary; 
+        width: 35rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        @include respond("ipad"){
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+          
+        }
+       }
+   }
+}
+
+.section-home-2{
+    border-radius: .81rem;
+    height: 35rem;
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    &__product-info{
+        margin-left: 10rem;
+        margin-bottom: 2rem;
+
+        h3{
+            margin-bottom: 3.5rem;
+         
+        }
+
+    }
+}
+
+.section-home-3{
+    display:flex; 
+    justify-content: space-between;
+    width: 90%;
+
+    &__product-gallery{
+        flex: 0 0 48.7%;
+        border-radius: .81rem;
+        height: 32rem;
+        background-color: blue;
+
+    }
+    &__product-info{
+        flex: 0 0 48.7%; 
+        border-radius: .81rem;
+        background-color:$color-gray-secondary; 
+        height: 32rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__product-box{
+        margin-left: 10rem;
+        h4{
+            margin-bottom: 3.5rem;
+        }
+    }
+
+
+
+}
+.section-home-4{
+    display: flex;
+    padding-top: 18rem;
+    padding-bottom: 18rem;
+    width: 90%;
+    justify-content: space-between;
+    &__detail{
+        flex: 0 0 50%; 
+        height: 58rem;
+        border-radius: .81rem; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+     
+
+        h2{
+            width: 40rem;
+            margin-bottom: 4rem;
+        }
+        p{
+            width: 45rem;
+        }
+        .best{
+            color: $color-gold-primary; 
+        }
+
+    }
+
+    &__gallery{
+        flex: 0 0 46%; 
+        border-radius: .81rem;
+
+    }
+}

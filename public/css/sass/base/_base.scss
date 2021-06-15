@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+@include respond("under-break"){
+  font-size: 56.25%;
+}
+@include respond("big-ipad"){
+  font-size: 50%;
+}
+}
+body {
+  box-sizing: border-box;
+  background-color: $color-black-primary; 
+
+}
+a{
+  text-decoration: none;
+}

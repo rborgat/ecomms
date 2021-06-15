@@ -1,0 +1,27 @@
+mixin navBar(user)
+   nav.nav
+      img.nav__el--hamburger(src="/assets/shared/tablet/icon-hamburger.svg", alt="hamburger")
+      .nav__logo-box
+         a.nav__el--navlogo(href='/')
+            img.nav__logo(src="/assets/shared/desktop/logo.svg", alt="logo")
+      .nav__links
+         a.a.nav__el.nav__el--navlink(href='/') Home
+         a.nav__el.nav__el--navlink(href='#')   Headphones
+         a.a.nav__el.nav__el--navlink(href='#') Speakers
+         a.a.nav__el.nav__el--navlink(href='#') Earphones
+      .nav__user
+         a.nav__.nav__el--cart(href="#")
+            img.nav__img(src="/assets/shared/desktop/icon-cart.svg", alt="cart")
+         if user
+            a.nav__el(href='#')
+               if user.image
+                  .nav__el.nav__el--img-box
+                     img.nav__user-img(src=`/img/users/user-1.jpg`)
+               else 
+                  .nav__el.nav__el--username-box
+                     p.nav__username=user.firstName.split("")[0] + user.lastName.split("")[0]
+         else
+            a.nav__el.nav__el--sign-up(href='#') Sign In
+
+         
+      

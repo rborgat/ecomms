@@ -1,0 +1,79 @@
+extends base
+include _navBar
+
+block header
+    header.header
+        .header__container
+            +navBar(user)
+            .header__sub-container
+                .item-info
+                    p.item-info__title New Product 
+                    .item-info__name
+                        h1.heading.heading--primary.heading--primary-header XX99 Mark II
+                            span.heading.heading--primary.heading--primary-header Headphones
+                    .item-info__description
+                        p.item-description-para Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast. 
+                    .header__btn
+                        a.btn.btn--gold(href="") See Product
+
+block content
+    main
+        section.shop
+            .shop__card.shop__card--headphones
+                .shop__img.shop__img--headphones
+                    img.shop__img--pic(src="/assets/shared/desktop/image-headphones.png" alt="image-headphones")
+                h6.shop__heading.heading.heading--senary Headphones
+                a.shop__link--text(href="") Shop
+                    span
+                        a.shop__link--img(href="")
+                            img(src="/assets/shared/desktop/icon-arrow-right.svg" alt="icon-arrow-right")
+            .shop__card.shop__card--speakers
+                .shop__img.shop__img--speakers
+                    img.shop__img--pic(src="/assets/shared/desktop/image-speakers.png" alt="image-speakers")
+                h6.shop__heading.heading.heading--senary Speakers
+                a.shop__link--text(href="") Shop
+                    span
+                        a.shop__link--img(href="")
+                            img(src="/assets/shared/desktop/icon-arrow-right.svg" alt="icon-arrow-right")
+            .shop__card.shop__card--earphones
+                .shop__img.shop__img--earphones
+                    img.shop__img--pic(src="/assets/shared/desktop/image-earphones.png" alt="image-earphones")
+                h6.shop__heading.heading.heading--senary Earphones
+                a.shop__link--text(href="") Shop
+                    span
+                        a.shop__link--img(href="")
+                            img(src="/assets/shared/desktop/icon-arrow-right.svg" alt="icon-arrow-right")
+        section.section-home-1
+            .section-home-1__product-gallery
+                .section-home-1__img-box
+                    img(src="/assets/home/desktop/image-speaker-zx9.png" alt="image-speakers-zx9")
+            .section-home-1__product-info
+                h1.heading.heading--primary ZX9
+                h1.heading.heading--primary Speaker
+                p.item-description-para Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.  
+                a.btn.btn--black(href="") See Product
+        section.section-home-2
+            .section-home-2__product-info
+                h3.heading.heading--quaternary ZX7 Speaker
+                a.btn.btn--clear(href="") See Product
+        section.section-home-3
+            .section-home-3__product-gallery
+            .section-home-3__product-info
+                .section-home-3__product-box
+                    h4.heading.heading--quaternary YX1 EarPhones
+                    a.btn.btn--clear(href="") See Product
+        section.section-home-4
+            .section-home-4__detail
+                h2.heading.heading--secondary Bringing you the 
+                    span.best best
+                    span  Audio Gear
+                p.section-home-4__para Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
+            .section-home-4__gallery
+        
+
+
+
+
+
+
+

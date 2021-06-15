@@ -1,0 +1,76 @@
+.footer{
+    padding-top: 7rem; 
+    color: $color-light-primary; 
+    background-color: $color-black-secondary;
+  
+
+
+    &__section{
+        display: flex;
+        width: 90%;
+        justify-content: space-around;
+        @include respond("ipad"){
+            flex-direction: column;
+        }
+    }
+    &-nav__items-medium{
+        display: none; 
+
+        @include respond("ipad"){
+            display: block;
+            margin-left: -3.4rem;
+            margin-bottom: 5rem;
+        }
+    }
+    &-info{
+        flex: 0 0 48%;
+        height: 27.7rem;
+
+        &__logo{
+            margin-bottom: 3rem;
+        }
+        &__para{
+            width: 51rem;
+            margin-bottom: 4rem;
+        }
+
+        &__copyright{
+            margin-bottom: 5rem;
+        }
+    }
+
+    &-nav{
+        flex: 0 0 48%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 27.7rem;
+        font-size: 1.3rem;
+        letter-spacing: .15rem;
+        &__items{
+            text-align: right;
+            @include respond("ipad"){
+                display: none;
+            }
+        }
+        &__icons{
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 5rem;
+            @include respond("ipad"){
+                margin-bottom: 0;
+                margin-top: -8rem;
+          
+            }
+            svg{
+                transition: all .1s;
+             }
+             svg:hover, svg:active{
+                 fill: blue; 
+             }
+        }
+       
+        
+    }
+}
+

@@ -1,0 +1,86 @@
+.nav{
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    border-bottom: 1px solid $color-gray-primary;
+    justify-content:space-between;
+    align-items: center; 
+    @include respond("big-ipad"){
+       height: 10rem;
+       justify-content: flex-start;
+    
+    }
+    &__logo-box{
+     
+    }
+    &__links{
+        @include respond("big-ipad"){
+            display: none;
+        
+        }
+    }
+    &__el--hamburger{
+        display: none;
+
+        @include respond("big-ipad"){
+            display: block; 
+            margin-right: 5rem;
+         
+         }
+
+    }
+    &__el:link, &__el:visited{
+        color: $color-light-primary; 
+        text-decoration: none;
+        display: inline-block;
+        padding-left: 3.5rem;
+        text-transform: uppercase;
+        transition: all .2s;
+    }
+    &__el:hover, &__el:active{
+        color:$color-gold-primary; 
+
+    }
+    &__el--sign-up{
+        margin-right: 2rem;
+    }
+    &__el--img-box{
+        width: 3rem; 
+        height: 3rem;
+
+      img{
+          height: 100%; 
+          width: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+      
+     
+      }
+       // object-fit: cover;
+       
+    }
+    &__user{
+
+        @include respond("big-ipad"){
+           margin-left: auto;
+        
+        }
+    }
+    &__el--username-box{
+        width: 2.7rem;
+        height:2.7rem;
+        border-radius: 50%;
+        position: relative;
+        background-color: $color-gray-primary;
+        text-align: center; 
+     
+    }
+    &__username{
+        color: $color-gold-primary; 
+        font-weight: 700;
+        @include centerAbsolute; 
+
+        
+
+    }
+}

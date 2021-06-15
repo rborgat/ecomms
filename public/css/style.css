@@ -1,0 +1,33 @@
+.header{
+    background-image: url("../assets/home/desktop/image-hero.jpg");
+
+}
+@media (max-width: 75em) {
+    .header {
+        background-position: center;
+    }
+  }
+  @media (max-width:64em) {
+    .header {
+        background-image: url("/assets/home/tablet/image-header.jpg");
+        background-size: cover; 
+        background-repeat: no-repeat;
+       
+    }
+  }
+.section-home-1{
+    background-image: url("../assets/home/desktop/pattern-circles.svg");
+    background-repeat: no-repeat;
+}
+.section-home-2{
+    background-image: url("../assets/home/desktop/image-speaker-zx7.jpg");
+    background-size: cover;
+}
+.section-home-3__product-gallery{
+    background-image: url("../assets/home/desktop/image-earphones-yx1.jpg");
+    background-size: cover;
+}
+.section-home-4__gallery{
+    background-image: url("../assets/shared/desktop/image-best-gear.jpg");
+    background-size: cover;
+}

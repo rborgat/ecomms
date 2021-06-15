@@ -1,0 +1,65 @@
+.header{
+    background-color: $color-black-secondary;
+    width: 100%;
+    height: 72rem;
+    position: relative;
+
+    @include respond("big-ipad"){
+      height: 110rem;
+      
+    }
+
+    &__container{
+        width: 95%;
+
+    }
+    
+  &__sub-container{
+    display: flex;
+    margin-top: auto;
+   
+    margin-bottom: auto;
+    width: 50rem;
+    position: absolute;
+    top: 61%; 
+    transform: translateY(-61%);
+
+
+    @include respond("big-ipad"){
+        @include centerAbsolute; 
+          
+    }
+
+  }
+
+  .item-info{
+
+    @include respond("big-ipad"){
+      text-align: center;
+     
+        
+  }
+    &__title{
+        padding-bottom: 1rem;
+    }
+    &__name{
+       padding-top: 1.5rem;
+       padding-bottom: 1.7rem;
+        span{
+            display: block;
+        }
+    }
+
+    &__description{
+        padding-bottom: 3rem;
+        width: 35rem;
+
+        @include respond("big-ipad"){
+          text-align: center;
+         width: 45rem;
+         padding-bottom: 5rem;
+      }
+    }
+  }
+}
+
