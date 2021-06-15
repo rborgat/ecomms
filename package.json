@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev:js": "parcel ./public/js/controller.js --out-dir ./public/bundle --out-file bundle.js",
+    "build:js": "parcel build ./public/js/controller.js --out-dir ./public/bundle --out-file bundle.js",
     "dev:css": "parcel ./public/css/sass/main.scss --out-dir ./public/css/bundle --out-file bundle.css"
   },
   "author": "",
