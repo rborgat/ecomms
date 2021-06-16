@@ -40,6 +40,10 @@ body{
             font-size: 7rem;
             line-height: 8rem;
         }
+        @include respond("iphone-max"){
+            font-size: 5rem;
+            line-height: 7rem;
+        }
        
     }
 

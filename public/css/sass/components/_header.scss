@@ -9,7 +9,7 @@
       
     }
     @include respond("iphone-max"){
-    
+      height: 90rem;
       
     }
     &__container{
@@ -32,6 +32,9 @@
         @include centerAbsolute; 
           
     }
+    @include respond("iphone-max"){
+     margin-left: 3.9rem;
+    }
 
   }
 
@@ -44,6 +47,12 @@
   }
     &__title{
         padding-bottom: 1rem;
+        color: $color-gray-primary; 
+        @include respond("iphone-max"){
+          font-size: 1.8rem;
+          letter-spacing: 1.4rem;
+          margin-top: 6rem;
+        }
     }
     &__name{
        padding-top: 1.5rem;
@@ -56,12 +65,25 @@
     &__description{
         padding-bottom: 3rem;
         width: 35rem;
+        color: $color-gray-primary; 
 
         @include respond("big-ipad"){
           text-align: center;
          width: 45rem;
          padding-bottom: 5rem;
       }
+      @include respond("iphone-max"){
+        font-size: 2rem;
+        line-height: 3.5rem;;
+        padding-bottom: 0rem;
+       
+      }
+    }
+  }
+  &__btn{
+    @include respond("iphone-max"){
+      margin-left: -3.5rem;
+      margin-top: 6rem;
     }
   }
 }
