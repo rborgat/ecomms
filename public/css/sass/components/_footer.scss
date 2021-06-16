@@ -46,6 +46,10 @@
         &__para{
             width: 51rem;
             margin-bottom: 4rem;
+
+            @include respond ("iphone-max"){
+                width: auto;
+            }
         }
 
         &__copyright{
