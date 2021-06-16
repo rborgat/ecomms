@@ -15,7 +15,7 @@
        
     }
   }
-  @media (max-width: 26.125em) {
+  @media (max-width: 25.875em) {
     .header {
         background-image: url("/assets/home/mobile/image-header.jpg");
         background-image: cover;
