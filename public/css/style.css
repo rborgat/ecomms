@@ -9,7 +9,7 @@
   }
   @media (max-width:64em) {
     .header {
-        background-image: url("/assets/home/tablet/image-header.jpg");
+        background-image: url("../assets/home/tablet/image-header.jpg");
         background-size: cover; 
         background-repeat: no-repeat;
        
@@ -17,11 +17,13 @@
   }
   @media (max-width: 25.875em) {
     .header {
-        background-image: url("/assets/home/mobile/image-header.jpg");
+        background-image: url("../assets/home/mobile/image-header.jpg");
         background-repeat: no-repeat;
+        background-size:cover; 
      
     }
   }
+  
 .section-home-1{
     background-image: url("../assets/home/desktop/pattern-circles.svg");
     background-repeat: no-repeat;
