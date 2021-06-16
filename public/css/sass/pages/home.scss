@@ -182,7 +182,7 @@
             @include respond("ipad"){
                 width: auto;
                 text-align: center;
-                width: 50rem;
+            
             }
             @include respond("iphone-max"){
                 width: auto;
