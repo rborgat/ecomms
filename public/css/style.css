@@ -18,8 +18,8 @@
   @media (max-width: 25.875em) {
     .header {
         background-image: url("../assets/home/mobile/image-header.jpg");
-        background-repeat: no-repeat;
         background-size:cover; 
+        background-position:initial; 
      
     }
   }
