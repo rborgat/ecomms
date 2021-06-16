@@ -15,10 +15,11 @@
        
     }
   }
-  @media (max-width: 28em) {
+  @media (max-width: 26.125em) {
     .header {
         background-image: url("/assets/home/mobile/image-header.jpg");
-        background-size: cover;
+        background-image: cover;
+        background-repeat: no-repeat;
     }
   }
 .section-home-1{
