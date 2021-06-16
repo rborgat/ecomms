@@ -182,9 +182,10 @@
             @include respond("ipad"){
                 width: auto;
                 text-align: center;
-            }
-            @include respond("ipad"){
                 width: 50rem;
+            }
+            @include respond("iphone-max"){
+                width: auto;
             }
         }
         p{
