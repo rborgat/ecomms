@@ -18,9 +18,8 @@
   @media (max-width: 25.875em) {
     .header {
         background-image: url("/assets/home/mobile/image-header.jpg");
-        background-image: cover;
         background-repeat: no-repeat;
-        background-position: initial;
+     
     }
   }
 .section-home-1{
