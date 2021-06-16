@@ -96,11 +96,23 @@
     justify-content: space-between;
     width: 90%;
 
+    @include respond(("iphone-max")){
+        flex-direction: column;
+    }
     &__product-gallery{
         flex: 0 0 48.7%;
         border-radius: .81rem;
         height: 32rem;
         background-color: blue;
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: .81rem
+        }
+        @include respond(("iphone-max")){
+             flex: 0 0 100%;
+
+        }
 
     }
     &__product-info{
@@ -111,6 +123,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @include respond(("iphone-max")){
+            margin-top: 5rem;;
+            height: 40rem;
+            padding-top: 9rem;;
+            padding-bottom: 9rem;
+
+       }
     }
 
     &__product-box{
@@ -158,13 +177,23 @@
                 width: auto;
                 text-align: center;
             }
+            @include respond("ipad"){
+                width: 50rem;
+            }
         }
         p{
             width: 45rem;
             @include respond("ipad"){
                 width: 70rem;
                 margin: 0 auto; 
-                font-size: 1.8rem;;
+                font-size: 1.6rem;;
+                text-align: center;
+            }
+            @include respond("iphone-max"){
+                width: 100%;
+                font-size: 2.3rem;;
+                letter-spacing: .2rem;
+                line-height: 3.7rem;
                 text-align: center;
             }
         }

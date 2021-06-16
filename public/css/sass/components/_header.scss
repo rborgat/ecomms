@@ -8,7 +8,10 @@
       height: 110rem;
       
     }
-
+    @include respond("iphone-max"){
+    
+      
+    }
     &__container{
         width: 95%;
 

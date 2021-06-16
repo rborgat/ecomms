@@ -40,12 +40,16 @@ body{
             font-size: 7rem;
             line-height: 8rem;
         }
+       
     }
 
     &--senary{
         font-size: 1.8rem;
         line-height: 2.4rem; 
         letter-spacing: .2rem;;
+        @include respond("iphone-max"){
+            font-size: 2.5rem;
+            }
     }
 
     &--quaternary{
@@ -53,6 +57,7 @@ body{
         line-height: 3.6rem;;
         letter-spacing: .2rem;
         font-weight: 600;
+        
     }
 
     &--secondary{
@@ -64,6 +69,10 @@ body{
         @include respond("ipad"){
             font-size: 6rem;
             line-height: 7rem;
+        }
+        @include respond("iphone-max"){
+            font-size: 4rem;
+            line-height: 5rem;
         }
     }
 

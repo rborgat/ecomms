@@ -22,4 +22,9 @@
       @content;
     }
   }
+  @if $breakpoint == iphone-max{
+    @media (max-width: 26.125em) {
+      @content;
+    }
+  }
 }

@@ -13,6 +13,9 @@ html {
 @include respond("big-ipad"){
   font-size: 50%;
 }
+@include respond("iphone-max"){
+  font-size: 44%;
+}
 }
 body {
   box-sizing: border-box;

@@ -15,6 +15,15 @@
        
     }
   }
+  @media (max-width: 26em) {
+    .header {
+        background-image: url("/assets/home/mobile/image-header.jpg");
+    
+        background-size: cover;
+        background-position: center center;
+       background-repeat: no-repeat;
+    }
+  }
 .section-home-1{
     background-image: url("../assets/home/desktop/pattern-circles.svg");
     background-repeat: no-repeat;
@@ -22,10 +31,12 @@
 .section-home-2{
     background-image: url("../assets/home/desktop/image-speaker-zx7.jpg");
     background-size: cover;
+
 }
-.section-home-3__product-gallery{
-    background-image: url("../assets/home/desktop/image-earphones-yx1.jpg");
-    background-size: cover;
+@media (max-width: 26em) {
+    .section-home-2 {
+       background-position: center;
+    }
 }
 .section-home-4__gallery{
   

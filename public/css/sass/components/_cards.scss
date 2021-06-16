@@ -3,6 +3,11 @@
     padding-bottom: 18rem;
     text-transform: uppercase;;
     width: 90%;
+    @include respond("iphone-max"){
+        display: flex;
+        flex-direction: column;
+       
+    }
     &__card{
         flex: 0 0 31%;
         height: 21.5rem;
@@ -12,6 +17,20 @@
         position: relative;
         @include respond("ipad"){
             flex: 0 0 32%
+        }
+        @include respond("iphone-max"){
+           margin-top: 10rem;;
+           flex: 0 0 100%;
+           padding-top: 4rem;;
+           padding-bottom: 4rem;
+           font-size: 1.6rem;
+           letter-spacing: .4rem;
+        
+        }
+        &--headphones{
+            @include respond("iphone-max"){
+                margin-top: -5rem;
+            }
         }
     }
 
@@ -30,6 +49,7 @@
                 width: 21rem;
                 height: 21rem;
             }
+           
         }
         &--speakers{
             width: 24rem;

@@ -12,7 +12,11 @@
         @include respond("ipad"){
             flex-direction: column;
         }
+        @include respond("iphone-max"){
+            text-align: center;
+        }
     }
+    
     &-nav__items-medium{
         display: none; 
 
@@ -20,6 +24,16 @@
             display: block;
             margin-left: -3.4rem;
             margin-bottom: 5rem;
+        }
+        @include respond("iphone-max"){
+            display: flex;
+            flex-direction: column;
+        }
+        .nav__el{
+            @include respond("iphone-max"){
+                margin-bottom: 3rem;
+                font-size: 1.8rem;
+            }
         }
     }
     &-info{
@@ -47,6 +61,8 @@
         height: 27.7rem;
         font-size: 1.3rem;
         letter-spacing: .15rem;
+
+
         &__items{
             text-align: right;
             @include respond("ipad"){
@@ -61,6 +77,11 @@
                 margin-bottom: 0;
                 margin-top: -8rem;
           
+            }
+            @include respond("iphone-max"){
+                align-self: center;
+                margin-top: 0rem;
+                margin-bottom: 5rem;
             }
             svg{
                 transition: all .1s;
