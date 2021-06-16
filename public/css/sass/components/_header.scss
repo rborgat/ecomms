@@ -33,7 +33,7 @@
           
     }
     @include respond("iphone-max"){
-
+      margin-top: 2rem;
      width: auto;
     }
 
@@ -77,13 +77,12 @@
         font-size: 2rem;
         line-height: 3.5rem;;
         padding-bottom: 0rem;
-       
+        width: auto;
       }
     }
   }
   &__btn{
     @include respond("iphone-max"){
-      margin-left: -3.5rem;
       margin-top: 6rem;
     }
   }
