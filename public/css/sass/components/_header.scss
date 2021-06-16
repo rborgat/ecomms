@@ -10,10 +10,14 @@
     }
     @include respond("iphone-max"){
       height: 90rem;
-      width: auto;
+      width: 90%;
+      background-color: $color-black-secondary;
     }
     &__container{
         width: 95%;
+        @include respond("iphone-max"){
+          width: auto;
+        }
 
     }
     
