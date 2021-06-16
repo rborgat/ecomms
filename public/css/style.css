@@ -30,7 +30,7 @@
     background-size: cover;
 
 }
-@media (max-width: 27em) {
+@media (max-width: 22em) {
     .section-home-2 {
        background-size: auto; 
        background-position: center; 
