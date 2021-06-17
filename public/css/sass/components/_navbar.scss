@@ -13,9 +13,7 @@
         width: 90%;
         margin: 0 auto;
     }
-    &__logo-box{
-     
-    }
+  
     &__links{
         @include respond("big-ipad"){
             display: none;
