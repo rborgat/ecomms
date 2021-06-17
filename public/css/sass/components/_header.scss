@@ -1,9 +1,11 @@
 .header{
     background-color: $color-black-secondary;
     width: 100%;
+    margin: 0 auto;
     height: 72rem;
     position: relative;
 
+  
     @include respond("big-ipad"){
       height: 110rem;
       

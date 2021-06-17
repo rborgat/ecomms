@@ -19,5 +19,10 @@ exports.productPage = catchAsync(async (req, res, next) => {
   res.status(200).render("detail", {
     title: "Overview Page",
     product,
+    user: {
+      firstName: "Riccardo",
+      lastName: "Borgat",
+      image: "Riccar",
+    },
   });
 });

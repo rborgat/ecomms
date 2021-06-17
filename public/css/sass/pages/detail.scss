@@ -1,5 +1,5 @@
 .header-product{
-    width: 90%;
+   width: 100%; 
 }
 .goback-button{
     padding-top: 8rem;
@@ -42,7 +42,7 @@
    &__name{
        margin-top: 2rem;
        @include respond('iphone-max'){
-           width: 50rem;
+           width: auto; 
            }
    }
    &__detail{
@@ -238,7 +238,8 @@
         height: 29.5rem; 
     
         border-radius: 1rem;
-
+       
+    
         @include respond("ipad"){
             height: 23.5rem;
         }
@@ -251,6 +252,7 @@
         flex: 0 0 59%;
         height: 62rem;
         border-radius: 1rem;
+    
         @include respond("ipad"){
             height: 50rem;
         }
@@ -260,6 +262,7 @@
         }
     }
     img{
+        object-fit: cover;
         border-radius: 1rem;
         width: 100%;;
         height: 100%; ;
