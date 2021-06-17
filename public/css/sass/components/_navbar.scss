@@ -2,7 +2,6 @@
     width: 100%;
     height: 8rem;
     display: flex;
-    border-bottom: 1px solid $color-gray-primary;
     justify-content:space-between;
     align-items: center; 
     @include respond("big-ipad"){

@@ -1,0 +1,274 @@
+.header-product{
+    width: 90%;
+}
+.goback-button{
+    padding-top: 8rem;
+    width: 90%;
+    a:link, a:visited{
+        color: $color-black-primary; 
+        transition: all .2s;;
+    }
+    a:hover, a:active{
+        color: $color-gold-primary; 
+    }
+}
+.detail-item{
+    margin-top: 5rem;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    @include respond("iphone-max"){
+        flex-direction: column;
+    }
+    &__title{
+        color: $color-gold-primary; 
+        letter-spacing: 1rem;
+        text-transform: uppercase;
+        
+    }
+   &__gallery{
+       flex: 0 0 45%;
+       height: 58rem;
+       border-radius: 1rem;
+       @include respond("ipad"){
+           height: 65rem;
+       }
+       img{
+           width: 100%;
+           height: 100%;
+           border-radius: 1rem;
+       }
+   }
+   &__name{
+       margin-top: 2rem;
+       @include respond('iphone-max'){
+           width: 50rem;
+           }
+   }
+   &__detail{
+       flex: 0 0 45%; 
+       height: 58rem;
+       border-radius: 1rem;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;;
+       @include respond("ipad"){
+        height: 65rem;
+    }
+    @include respond("iphone-max"){
+        margin-top: 5rem;
+        text-align: center;
+    }
+      
+   }
+   &__description{
+       margin-top: 4rem;
+       letter-spacing: .2rem;
+       line-height: 2.5rem;
+       font-size: 1.4rem;
+       font-weight: normal;
+       color:$color-black-primary;
+       @include respond("ipad"){
+           font-size: 1.7rem;
+           letter-spacing: .3rem;
+           line-height: 2.8rem;
+       }
+       @include respond("iphone-max"){
+           font-size: 1.8rem;
+           letter-spacing: .4rem;
+           line-height: 3rem;
+       }
+   }
+
+   &__price{
+       margin-top: 3rem;
+       letter-spacing: .1rem;
+       font-weight: 700;;
+
+       @include respond("ipad"){
+           font-size: 1.8rem;
+       }
+       @include respond("iphone-max"){
+           font-size: 1.9rem;
+       }
+      
+   }
+   &__cart-container{
+       margin-top: 3.5rem; 
+       display: flex;
+       @include respond("iphone-max"){
+           justify-content: center;
+       }
+       input{
+           margin-right: 1.5rem;
+           width: 13rem;
+           background-color: $color-gray-secondary;
+           border: none;
+           text-align: center;
+           font-weight: 700;
+
+           @include respond("iphone-max"){
+               display: none;
+           }
+       }
+   }
+}
+.detail-features{
+    width: 90%;
+    padding-top: 17rem;
+    padding-bottom: 17rem;
+    display: flex;
+    justify-content: space-between; 
+    @include respond("ipad"){
+        padding: 0;
+        flex-direction: column;
+        
+ 
+        
+    }
+    &__features-container{
+        flex: 0 0 60%;
+        letter-spacing: .2rem;
+        line-height: 2.5rem;
+        font-size: 1.4rem;
+        font-weight: normal;
+        @include respond("ipad"){
+            flex: 0 0 100%; 
+            font-size: 1.7rem;
+            letter-spacing: .3rem;
+            line-height: 2.8rem;
+            padding-top: 12rem;
+        }
+        @include respond("iphone-max"){
+            font-size: 1.8rem;
+           letter-spacing: .4rem;
+           line-height: 3rem;
+        }
+    }
+    &__includes-container{
+        flex: 0 0 30%;
+        
+        @include respond("ipad"){
+            flex: 0 0 100%; 
+            padding-top: 12rem;
+            padding-bottom: 12rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+        @include respond("iphone-max"){
+            flex-direction: column;
+        }
+        
+    }
+    &__quantity-container{
+        @include respond("ipad"){
+            flex: 0 0 50%; 
+        }
+    }
+
+    &__para--1{
+        margin-top: 3.5rem;
+    }
+    &__para--2{
+        margin-top: 2.5rem;
+    }
+   &__includes-heading{
+       margin-bottom: 3.5rem;
+     @include respond("ipad"){
+       flex: 0 0 50%;
+       font-size: 4rem;
+     }
+     @include respond("iphone-max"){
+         font-size: 3.5rem;
+     }
+   }
+
+   .includes__quantity{
+       color: $color-gold-primary; 
+       font-weight: 700;
+       margin-bottom: 1rem;
+       @include respond("ipad"){
+        font-size: 1.7rem;
+        letter-spacing: .3rem;
+        line-height: 2.8rem;
+       }
+       @include respond("iphone-max"){
+        font-size: 1.8rem;
+        letter-spacing: .4rem;
+        line-height: 3rem;
+       }
+   }
+   .includes__item{
+       color: $color-black-primary; 
+       display: inline-block ;
+       margin-left: 2rem;
+       font-weight: normal;
+   }
+}
+.detail-gallery{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    @include respond("iphone-max"){
+        flex-direction: column;
+    }
+    &__container--1{
+        flex: 0 0 38%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include respond("iphone-max"){
+            flex: 0 0 100%; 
+        }
+
+    }
+    &__img-box--1{
+
+        height: 29.5rem;
+        border-radius: 1rem;
+        @include respond("ipad"){
+            height: 23.5rem;
+        }
+
+    
+    }
+    &__img-box--2{
+       // flex: 0 0 48%;
+        height: 29.5rem; 
+    
+        border-radius: 1rem;
+
+        @include respond("ipad"){
+            height: 23.5rem;
+        }
+        @include respond("iphone-max"){
+            margin-top: 3rem ;
+        }
+       
+    }
+    &__container--2{
+        flex: 0 0 59%;
+        height: 62rem;
+        border-radius: 1rem;
+        @include respond("ipad"){
+            height: 50rem;
+        }
+        @include respond("iphone-max"){
+            flex: 0 0 100%; 
+            margin-top: 3rem;
+        }
+    }
+    img{
+        border-radius: 1rem;
+        width: 100%;;
+        height: 100%; ;
+    }
+}
+
+.detail-other{
+    width: 90%;
+    padding-top: 14rem;;
+    padding-bottom: 6rem; 
+
+}

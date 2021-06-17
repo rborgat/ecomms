@@ -1,0 +1,76 @@
+.also-like{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6rem; 
+    @include respond("iphone-max"){
+        flex-direction: column;
+        margin-top: 0;
+    }
+    &__heading{
+        text-align: center;
+    }
+    &__item-container{
+        flex: 0 0 31%; 
+        
+        display: flex;
+        flex-direction: column;
+        
+    
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+       
+    }
+
+    &__gallery{
+        height: 32rem;
+        border-radius: 1rem;
+
+        @include respond("iphone-max"){
+            height: 20rem;
+            margin-top: 8rem;
+            margin-bottom: 2rem;
+        }
+     
+    }
+  &__detail{
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__btn{
+      margin-top: 3.5rem;
+  }
+}
+
+.img__deskPath{
+
+    @include respond("ipad"){
+        display: none;
+    }
+    @include respond("iphone-max"){
+        display: none;
+    }
+}
+.img__tabPath{
+    display: none;
+
+    @include respond("ipad"){
+        display: block; 
+    }
+    @include respond("iphone-max"){
+        display: none;
+    }
+
+}
+
+.img__mobPath{
+    display: none;
+    @include respond("iphone-max"){
+        display: block;
+    }
+}

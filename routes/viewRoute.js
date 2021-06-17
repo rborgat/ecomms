@@ -1,9 +1,9 @@
-const express = require("express"); 
-const viewController = require("../controllers/viewController"); 
+const express = require("express");
+const viewController = require("../controllers/viewController");
 
+const router = express.Router();
 
-const router = express.Router(); 
+router.get("/", viewController.homePage);
+router.get("/detail/:slug", viewController.productPage);
 
-router.get('/', viewController.homepage); 
-
-module.exports = router; 
+module.exports = router;

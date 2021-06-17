@@ -1,0 +1,10 @@
+mixin alsolike(item)
+    .also-like__item-container
+        .also-like__gallery
+            img.img__deskPath(src=`${item.image.desktop.split("").slice(1).join("")}`, alt=`${item.name}`)
+            img.img__tabPath(src=`${item.image.tablet.split("").slice(1).join("")}`, alt=`${item.name}`)
+            img.img__mobPath(src=`${item.image.mobile.split("").slice(1).join("")}`, alt=`${item.name}`)
+        .also-like__detail
+            h5.heading.heading--quaternary XX99 Mark II
+            .also-like__btn
+                a.btn.btn--gold(href=`/detail/${item.slug}`) See Product

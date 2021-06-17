@@ -1,0 +1,73 @@
+extends base
+include _navBar 
+include _alsolike
+include _shop
+include _sectionhome
+
+block header
+    header.header-product.content-center
+        +navBar(user)
+block content
+    main
+        .goback-button.content-center
+            a(href="/") Go Back
+        section.detail-item
+            .detail-item__gallery
+                img.section-product-1__img.img__deskPath(src=`${product.image.desktop.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                img.section-product-1__img.img__tabPath(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                img.section-product-1__img.img__mobPath(src=`${product.image.mobile.split("").slice(1).join("")}`, alt=`${product.name} image`)
+            .detail-item__detail
+                if product.new
+                    p.detail-item__title New Product
+                else
+                    p.detal-item__empty
+                .detail-item__name
+                    h2.heading.heading--secondary.heading--secondary-detail= product.name
+                    h2.heading.heading--secondary
+                p.detail-item__description= product.description
+                p.detail-item__price= product.formattedPrice
+                .detail-item__cart-container
+                    input.detail-item__cart-input(type="number" name="cart-input" placeholder="1")
+                    .detail-item__cart-button
+                        a.btn.btn--gold(href="/") add to cart
+        section.detail-features
+            .detail-features__features-container
+                h.heading.heading--tertiary.detail-features__heading Features
+                p.detail-features__para--1= product.features.split("\n")[0]
+                p.detail-features__para--2= product.features.split("\n")[2]
+            .detail-features__includes-container
+                h3.heading.heading--tertiary.detail-features__includes-heading in the box
+                .detail-features__quantity-container
+                    each item in product.includes
+                        p.includes__quantity= `${item.quantity}x`
+                            span.includes__item= `${item.item}`
+        section.detail-gallery
+            .detail-gallery__container--1
+                .detail-gallery__img-box--1
+                    img.img__deskPath(src=`${product.gallery.first.desktop.split("").slice(1).join("")}`, alt="image-gallery-1")
+                    img.img__tabPath(src=`${product.gallery.first.tablet.split("").slice(1).join("")}`, alt="image-gallery-1")
+                    img.img__mobPath(src=`${product.gallery.first.mobile.split("").slice(1).join("")}`, alt="image-gallery-1")
+                .detail-gallery__img-box--2
+                    img.img__deskPath(src=`${product.gallery.second.desktop.split("").slice(1).join("")}`, alt="image-gallery-2")
+                    img.img__tabPath(src=`${product.gallery.second.tablet.split("").slice(1).join("")}`, alt="image-gallery-2")
+                    img.img__mobPath(src=`${product.gallery.second.mobile.split("").slice(1).join("")}`, alt="image-gallery-2")
+            .detail-gallery__container--2
+                    img.img__deskPath(src=`${product.gallery.third.desktop.split("").slice(1).join("")}`, alt="image-gallery-3")
+                    img.img__tabPath(src=`${product.gallery.third.tablet.split("").slice(1).join("")}`, alt="image-gallery-3")
+                    img.img__mobPath(src=`${product.gallery.third.mobile.split("").slice(1).join("")}`, alt="image-gallery-3")
+        section.detail-other
+            h3.heading.heading--tertiary.also-like__heading You may also like
+            .also-like
+                each item in product.others
+                    +alsolike(item)
+        section.shop
+            +shop
+        section.section-home-4.detail-home
+            +sectionhome
+
+               
+                
+            
+
+
+                

@@ -1,27 +1,30 @@
 .header {
   max-width: 144rem;
   margin: 0 auto;
-  &__container{
+  &__container {
     max-width: 120rem;
     margin: 0 auto;
   }
- 
 }
+
 main {
-  max-width:  144rem;
+  max-width: 144rem;
   background-color: $color-light-primary;
   margin: 0 auto;
 }
-section {
+
+.footer {
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.content-center {
   max-width: 120rem;
   margin: 0 auto;
 }
-.footer{
-  max-width: 144rem;
-  margin: 0 auto;
 
-  &__section{
-    max-width: 120rem;
-    margin: 0 auto; 
-  }
+section{
+  display: block; 
+  max-width: 120rem;
+  margin: 0 auto;
 }

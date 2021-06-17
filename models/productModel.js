@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const helper = require("../utils/helper");
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -35,21 +36,34 @@ const productSchema = new mongoose.Schema({
       tablet: String,
       desktop: String,
     },
-    second:{
-        mobile: String,
-        tablet: String,
-        desktop: String,
+    second: {
+      mobile: String,
+      tablet: String,
+      desktop: String,
     },
     third: {
-        mobile: String,
-        tablet: String,
-        desktop: String,
+      mobile: String,
+      tablet: String,
+      desktop: String,
     },
-
   },
-  others: [{slug: String, name:String,  image: { mobile: String, tablet: String, desktop: String } }]
+  others: [
+    {
+      slug: String,
+      name: String,
+      image: { mobile: String, tablet: String, desktop: String },
+    },
+  ],
 });
 
-const Product = mongoose.model('Product', productSchema); 
+productSchema.virtual("formattedPrice").get(function () {
+  return helper.formatPrice(this.price);
+});
+/* productSchema.post(/^find/, function (docs, next) {
+  docs.price = helper.formatPrice(docs.price);
+  console.log(docs.price)
+  next();
+}); */
+const Product = mongoose.model("Product", productSchema);
 
-module.exports = Product; 
+module.exports = Product;
