@@ -4,6 +4,12 @@ const viewController = require("../controllers/viewController");
 const router = express.Router();
 
 router.get("/", viewController.homePage);
-router.get("/detail/:slug", viewController.productPage);
+router.get("/detail/:slug", viewController.overviewPage);
+router.get("/checkout", viewController.checkoutPage);
+router.get(
+  "/product/:title",
+  viewController.convertToUpperCase,
+  viewController.productPage
+);
 
 module.exports = router;

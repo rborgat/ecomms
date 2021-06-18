@@ -1,0 +1,52 @@
+extends base
+include _navBar
+include _shop
+include _sectionhome
+block header
+    header.product-header
+        .product-header__nav.content-center
+            +navBar(user)
+        .product-header__title.content-center
+            h1.heading.heading--secondary.heading--secondary-light #{productTitle}
+block content            
+    main.product
+        - const [product] = products.filter(obj => obj.new)
+        -  products = products.filter(obj => !obj.new)
+        section.product-item
+            .product-item__gallery
+                img.img__deskPath(src=`${product.image.desktop.split("").slice(1).join("")}`, alt=`${product.name} image}`)
+                img.img__tabPath(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                img.img__mobPath(src=`${product.image.mobile.split("").slice(1).join("")}`, alt=`${product.name} image`)
+            .product-item__detail
+                if product.new
+                    p.product-item__title New Product
+                .product-item__name
+                    h2.heading.heading--secondary.heading--secondary-detail= product.name.split(" ")[0]
+                    h2.heading.heading--secondary= product.category
+                p.product-item__description= product.description
+                .product-item__btn-container
+                    .product-item__btn
+                        a.btn.btn--gold(href=`/detail/${product.slug}`) See Product
+        each product in products
+            section.product-item
+                .product-item__gallery
+                    img.img__deskPath(src=`${product.image.desktop.split("").slice(1).join("")}`, alt=`${product.name} image}`)
+                    img.img__tabPath(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                    img.img__mobPath(src=`${product.image.mobile.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                .product-item__detail
+                    if product.new
+                        p.product-item__title New Product
+                    .product-item__name
+                        h2.heading.heading--secondary.heading--secondary-detail= product.name.split(" ")[0]
+                        h2.heading.heading--secondary= product.category
+                    p.product-item__description= product.description
+                    .product-item__btn-container
+                        .product-item__btn
+                            a.btn.btn--gold(href=`/detail/${product.slug}`) See Product
+        section.shop
+            +shop
+        section.section-home-4.detail-home
+            +sectionhome
+
+
+

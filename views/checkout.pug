@@ -1,0 +1,46 @@
+extends base
+include _navBar
+
+block header
+    header.header-product.content-center
+        +navBar(user)
+block content
+    main
+        .goback-button.content-center
+             a(href="/") Go Back
+        section.checkout
+            .checkout-form
+                h3.heading.heading--tertiary Checkout
+                form.form(action="")
+                    .form__group
+                        h6.heading.heading__form-title Billing Details
+                        label(for="name") Name
+                        input(type="text" id= "name" name="name")
+                        label(for="email") Email
+                        input(type="email" id="email" name="name")
+                        label(for="phone")
+                        input(type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}")
+                    .form__group
+                        h6.heading.heading__form-title Shipping Info
+                        label(for="address") Address
+                        input(type="text" id= "address" name="address")
+                        label(for="zipcode") Zipcode
+                        input(type="text" id="zipcode" name="zipcode")
+                        label(for="city") City
+                        input(type="text" id="city" name="city")
+                    .form__group.form__group-bottom
+                        h6.heading.heading__form-title Payment Details
+                        p Payment Method
+                    .form__group
+                        label(for="address") Address
+                        input(type="text" id= "address" name="address")
+                        label(for="zipcode") Zipcode
+                        input(type="text" id="zipcode" name="zipcode")
+
+
+                    
+
+
+
+
+            .checkout-summary

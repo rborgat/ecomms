@@ -8,9 +8,14 @@
        height: 10rem;
        justify-content: flex-start;
     
+    
+    }
+    @include respond ("ipad"){
+        width: 90%;
+        margin: 0 auto;
     }
     @include respond("iphone-max"){
-        width: 90%;
+        
         margin: 0 auto;
     }
   

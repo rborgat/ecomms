@@ -22,8 +22,8 @@ block content
                 else
                     p.detal-item__empty
                 .detail-item__name
-                    h2.heading.heading--secondary.heading--secondary-detail= product.name
-                    h2.heading.heading--secondary
+                    h2.heading.heading--secondary.heading--secondary-detail= product.name.split(" ")[0]
+                    h2.heading.heading--secondary= product.category
                 p.detail-item__description= product.description
                 p.detail-item__price= product.formattedPrice
                 .detail-item__cart-container
