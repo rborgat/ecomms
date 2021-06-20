@@ -1,0 +1,93 @@
+.checkout__form {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+ 
+
+  .heading__from-checkout {
+  }
+  .heading__form-title {
+    margin-top: 5.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .form {
+    &__section {
+    }
+    input {
+      cursor: pointer;
+      height: 5rem;
+      font-size: 1.6rem;
+      padding-left: 2.5rem;
+      text-transform: capitalize;
+      border-radius: 0.8rem;
+      color: $color-black-quaternary;
+      border: 1px solid $color-black-tertiary;
+      background-color: $color-light-primary;
+      outline: none;
+      @include respond("ipad"){
+        height: 6rem;
+        font-size: 1.5qrem;
+      }
+    }
+
+    input:active,
+    input:focus {
+      border-color: $color-alert-primary;
+      color: $color-black-primary;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+    label {
+      padding-bottom: 0.5rem;
+    }
+    &__group {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.3rem;
+      font-weight: 700;
+      @include respond("ipad"){
+  
+        font-size: 1.4rem;
+      }
+    }
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .form__group {
+        flex: 0 0 49%;
+        @include respond("iphone-max"){
+          flex:  0 0 100%;
+        }
+      }
+      label:last-of-type {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+
+  .form-payment {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+
+    &__inputs {
+      flex: 0 0 50%;
+    }
+    input:last-of-type {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+input:active,
+input:focus {
+  border-color: red;
+}

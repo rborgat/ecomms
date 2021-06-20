@@ -1,0 +1,152 @@
+.checkout {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 15rem;
+  justify-content: space-between;
+  @include respond("ipad") {
+    flex-direction: column;
+  }
+  &__form {
+    flex: 0 0 65%;
+    border-radius: 1rem;
+    background-color: $color-light-primary;
+  }
+
+  &__summary {
+    flex: 0 0 32%;
+    height: 62.5rem;
+    background-color: $color-light-primary;
+    border-radius: 1rem;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    padding-top: 3.7rem;
+    padding-bottom: 2.5rem;
+
+    @include respond("ipad") {
+      margin-top: 4rem;
+      padding-top: 5.5rem;
+      padding-bottom: 5.5rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  .summary {
+    &__items {
+      padding-top: 3rem;
+      padding-bottom: 1.5rem;
+      @include respond("ipad"){
+          padding-top: 4.5rem;
+          padding-bottom: 2rem;
+      }
+    }
+    &-item {
+      display: flex;
+      margin-bottom: 2.2rem;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      @include respond("ipad"){
+          font-size: 1.9rem;
+          margin-bottom: 3rem;;
+          justify-content: initial;
+      }
+      &__price{
+        @include respond("ipad"){
+            font-size: 1.5rem;
+        }
+      }
+    }
+
+    &-gallery {
+      width: 6.4rem;
+      height: 6.4rem;
+      border-radius: 1rem;
+      @include respond("ipad") {
+        width: 8rem;
+        height: 8rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.8rem;
+        object-fit: cover;
+      }
+    }
+    &-description {
+      flex: 0 0 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+     
+
+      @include respond("ipad"){
+          margin-left: 2.5rem;
+          margin-right: auto;
+      }
+      &__name {
+        font-weight: 700;
+      }
+
+      &__price{
+          @include respond("ipad"){
+              font-size: 1.7rem;
+          }
+      }
+    }
+
+    &-quantity {
+      flex: 0 0 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      font-size: 1.5rem;
+      @include respond("ipad"){
+          font-size: 1.9rem;
+          text-align: right;
+      }
+    
+    }
+
+    &-grand-total {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      &__total {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: $color-gold-primary;
+
+        @include respond("ipad") {
+          font-size: 2.3rem;
+        }
+      }
+    }
+    &-btn {
+      text-align: center;
+    }
+  }
+}
+
+.cart-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  @include respond("ipad") {
+    font-size: 1.9rem;
+    margin-bottom: 1.7rem;
+  }
+}
+.cart-totals {
+  font-weight: 700;
+  font-size: 1.6rem;
+  @include respond("ipad") {
+    font-size: 2rem;
+  }
+}

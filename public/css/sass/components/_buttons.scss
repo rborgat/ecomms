@@ -17,10 +17,20 @@
         font-size:1.8rem;
     }
 
+    &--gold-summary{
+      
+            width: 100%;
+            @include respond ("ipad"){
+                padding-left: auto;
+                padding-right: auto;
+                
+            }
+        
+    }
     &--gold:link, &--gold:visited{
         background-color: $color-gold-primary;;
         color: $color-light-primary; 
-        
+       
     }
     &--gold:hover, &--gold:active{
         background-color: $color-gold-secondary;;

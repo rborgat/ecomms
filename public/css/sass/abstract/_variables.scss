@@ -1,6 +1,8 @@
 
 $color-black-primary: hsl(0, 0%, 0%); 
 $color-black-secondary: #101010; 
+$color-black-tertiary: rgb(16, 16, 16, .3);
+$color-black-quaternary: rgb(16, 16, 16, .5);
 
 $color-gray-primary: hsla(0, 0%, 95%, 0.35);   
 $color-gray-secondary: #f1f1f1; 
@@ -9,3 +11,5 @@ $color-light-primary: #ffffff;
 
 $color-gold-primary: #d87d4a; 
 $color-gold-secondary: #fbaf85; 
+
+$color-alert-primary: #eb5757;
