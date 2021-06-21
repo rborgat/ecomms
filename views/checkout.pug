@@ -1,5 +1,10 @@
 extends base
 include _navBar
+include _cart
+
+block overlay
+    .overlay 
+        +cart
 
 block header
     header.header-product.content-center

@@ -3,7 +3,11 @@ include _navBar
 include _alsolike
 include _shop
 include _sectionhome
+include _cart
 
+block overlay
+    .overlay 
+        +cart
 block header
     header.header-product.content-center
         +navBar(user)

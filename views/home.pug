@@ -2,7 +2,11 @@ extends base
 include _navBar
 include _shop
 include _sectionhome
+include _cart
 
+block overlay
+    .overlay 
+        +cart
 block header
     header.header
         .header__container.content-center
@@ -44,6 +48,7 @@ block content
                     a.btn.btn--clear(href="/detail/yx1-earphones") See Product
         section.section-home-4
             +sectionhome
+    
 
 
 
