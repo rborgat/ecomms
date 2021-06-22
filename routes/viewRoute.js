@@ -12,4 +12,6 @@ router.get(
   viewController.productPage
 );
 
+router.get("/signup", viewController.signup);
+router.get("/login", viewController.login); 
 module.exports = router;

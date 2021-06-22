@@ -1,0 +1,25 @@
+extends base
+include _navbar
+
+block header
+    header.header-product.content-center
+        +navBar(user)
+block content
+    main.main-bg-gray
+        section.login
+            .login__form
+                form.logins(action="")
+                    h3.heading.heading--signup.heading--login Log IN
+                    .signup__username
+                        .form__group
+                            label(for="username") Email/Username
+                            input.input__class(type="text" id= "username" name="username")
+                        .form__group
+                            label(for="password") Password
+                            input.input__class(type="password" id= "password" name="password")
+                    a.login__forgot-password(href="") Forgot your email or password?
+                    input.login__btn(type="submit" value="Log In") 
+                .login__noaccount-box
+                        p Don't have an account? 
+                            a.login__no-account-link(href="/signup")  Sign up here!
+                    

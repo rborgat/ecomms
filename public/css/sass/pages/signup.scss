@@ -1,0 +1,110 @@
+.signup{
+    height: 100vh;
+    display: flex;; 
+    justify-content: center;
+    align-items: center;
+   
+    @include respond("big-ipad"){
+        height: auto;
+        padding-top: 23rem;;
+        padding-bottom: 15rem;
+    }
+    &__form{
+        height: 60rem;
+        width: 52rem;
+        border-radius: 1rem;
+        background-color: $color-light-primary;
+        padding-left: 4rem;
+        padding-right: 4rem;;
+        padding-bottom: 5rem;;
+        padding-top: 5rem;;
+        margin-top: -8rem;
+    
+    
+      
+    }
+
+    .form__group {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        
+        @include respond("ipad"){
+    
+          font-size: 1.4rem;
+        }
+        input{
+            height: 4.5rem;
+            border: none;
+            font-size: 1.3rem;
+            background-color: $color-gray-secondary;
+            border-radius: .3rem;
+            padding-left: 1rem;;
+            text-transform: capitalize;
+            color: $color-black-quaternary;
+            outline: none;
+          }
+          label{
+              font-size: 1.2rem;
+              text-transform: uppercase;
+         
+          }
+
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover,
+          input:-webkit-autofill:focus,
+          input:-webkit-autofill:active {
+              -webkit-box-shadow: 0 0 0 30px $color-gray-secondary inset !important;
+          }
+
+      }
+     
+      &__wrap{
+          display: flex;
+          justify-content: space-between;
+          .form__group{
+              flex: 0 0 48.5%; 
+          }
+      }
+
+     /*  &__btn, .login__btn{
+          margin-top: 5rem;
+          width: 100%;
+          display: inline-block; 
+           padding: 2rem 4rem; 
+           font-size: 1.7rem;
+           text-transform: uppercase;
+           color: $color-light-primary; 
+           background-color: $color-gold-primary;
+           outline: none;
+           border: none;
+           border-radius: .3rem;
+           transition:all .5s;
+      }
+      &__btn:hover, &__btn:active, .login__btn:hover, .login__btn:active{
+       background-color: $color-gold-secondary;
+      } */
+
+    
+}
+
+
+.signup__btn, .login__btn{
+    margin-top: 5rem;
+    width: 100%;
+    display: inline-block; 
+     padding: 2rem 4rem; 
+     font-size: 1.7rem;
+     text-transform: uppercase;
+     color: $color-light-primary; 
+     background-color: $color-gold-primary;
+     outline: none;
+     border: none;
+     border-radius: .3rem;
+     transition:all .5s;
+}
+.signup__btn:hover, .signup__btn:active, .login__btn:hover, .login__btn:active{
+ background-color: $color-gold-secondary;
+}

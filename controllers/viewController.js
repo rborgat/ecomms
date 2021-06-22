@@ -4,12 +4,6 @@ const Product = require("../models/productModel");
 exports.homePage = catchAsync(async (req, res, next) => {
   res.status(200).render("home", {
     title: "Home Page",
-
-    user: {
-      firstName: "Riccardo",
-      lastName: "Borgat",
-      image: "Riccar",
-    },
   });
 });
 
@@ -19,11 +13,6 @@ exports.overviewPage = catchAsync(async (req, res, next) => {
   res.status(200).render("detail", {
     title: "Overview Page",
     product,
-    user: {
-      firstName: "Riccardo",
-      lastName: "Borgat",
-      image: "Riccar",
-    },
   });
 });
 
@@ -42,21 +31,23 @@ exports.productPage = catchAsync(async (req, res, next) => {
     title: req.body.productTitle,
     productTitle: req.body.productTitle,
     products,
-    user: {
-      firstName: "Riccardo",
-      lastName: "Borgat",
-      image: "Riccar",
-    },
   });
 });
 
 exports.checkoutPage = (req, res, next) => {
   res.status(200).render("checkout", {
     title: "Checkout",
-    user: {
-      firstName: "Riccardo",
-      lastName: "Borgat",
-      image: "Riccar",
-    },
+  });
+};
+
+exports.signup = (req, res, next) => {
+  res.status(200).render("signup", {
+    title: "Sign up",
+  });
+};
+
+exports.login = (req, res, next) => {
+  res.status(200).render("login", {
+    title: "Log in",
   });
 };

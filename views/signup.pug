@@ -1,0 +1,35 @@
+extends base
+include _navbar
+
+block header
+    header.header-product.content-center
+        +navBar(user)
+block content
+    main.main-bg-gray
+        section.signup
+            .signup__form
+                form.sign(action="")
+                    h3.heading.heading--signup Create Your Account
+                    .signup__customerName.signup__wrap
+                        .form__group
+                            label(for="firstName") First Name 
+                            input.input__class(type="text" id= "firstName" name="firstName")
+                        .form__group
+                            label(for="lastName") Last Name
+                            input(type="text" id="lastName" name="lastName")
+                    .signup__username
+                        .form__group
+                            label(for="email") Email 
+                            input.input__class(type="email" id= "email" name="email")
+                        .form__group
+                            label(for="userName") Username
+                            input(type="text" id="userName" name="userName")
+                    .signup__username.signup__wrap
+                        .form__group
+                            label(for="password") Password
+                            input.input__class(type="password" id= "password" name="password")
+                        .form__group
+                            label(for="passwordConfirm") Confirm Password
+                            input(type="password" id="passwordConfirm" name="passwordConfirm")
+                    input.signup__btn(type="submit" value="Sign up") 
+                    

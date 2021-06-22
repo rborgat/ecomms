@@ -1,4 +1,5 @@
 .overlay{
+
     z-index: 300;
     height: 100vh;;
     width: 100%;
@@ -11,6 +12,9 @@
     bottom: 0;
     display: flex;
     justify-content: flex-end;
+
+
+        display: none;
 
     @include respond("iphone-max"){
         justify-content: center;
