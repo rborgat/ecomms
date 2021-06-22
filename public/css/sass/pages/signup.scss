@@ -20,7 +20,10 @@
         padding-top: 5rem;;
         margin-top: -8rem;
     
-    
+        @include respond("iphone-max"){
+            width: 50rem;
+            height: 78rem;
+        }
       
     }
 
@@ -64,8 +67,13 @@
       &__wrap{
           display: flex;
           justify-content: space-between;
+          @include respond ("iphone-max"){
+            display: block;
+             }
           .form__group{
               flex: 0 0 48.5%; 
+
+             
           }
       }
 
