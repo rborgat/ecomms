@@ -13,10 +13,14 @@
         height: 52rem;
         width: 44rem;
         background-color: $color-light-primary;
-        
+       
       
         display: flex;
         flex-direction: column;
+
+        @include respond("iphone-max"){
+            width: 42rem;
+        }
     }
     .logins{
         padding-left: 4rem;
