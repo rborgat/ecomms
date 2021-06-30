@@ -4,6 +4,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const path = require("path");
+
 const compression = require("compression");
 const passport = require("passport");
 const flash = require("express-flash");
@@ -21,6 +22,10 @@ const viewRouter = require("./routes/viewRoute");
 
 const app = express();
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -35,12 +40,8 @@ app.use(
 app.post(
   "/webhook-checkout",
   express.raw({ type: "application/json" }),
-  bookingController.webHookCheckout
+  bookingController.webhookCheckout
 );
-
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
-
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(mongoSanitize());
@@ -49,7 +50,6 @@ app.use(hpp());
 app.use(compression());
 
 app.use(flash());
-app.use(express.static(path.join(__dirname, "public")));
 
 const sessionStore = new MongoStore({
   mongoUrl: process.env.DATABASE.replace(

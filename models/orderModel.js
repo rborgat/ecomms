@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
-    Total: {
+    total: {
       type: Number,
       required: true,
     },
