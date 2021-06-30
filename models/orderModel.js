@@ -19,6 +19,7 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    session: String,
   },
   {
     toJSON: { virtuals: true },

@@ -32,10 +32,11 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createNewOrder = catchAsync(async (session, req) => {
   const shippingAddress = JSON.parse(session.client_reference_id);
   await Order.create({
-    user: req.user,
-    products: req.products,
-    shippingAddress,
-    total: req.total,
+    user: ["60d613e99e7c5f072f2145d9"],
+    products: ["60d613e99e7c5f072f2145d9"],
+    shippingAddress: shippingAddress,
+    total: 1200,
+    session: req,
   });
 });
 exports.webhookCheckout = (req, res, next) => {
@@ -58,7 +59,7 @@ exports.webhookCheckout = (req, res, next) => {
       products: req.session.cart.ids,
       total: req.session.cart.totalPrice,
     };
-    createNewOrder(event.data.object, cartInfo);
+    createNewOrder(event.data.object, req.session);
 
     delete req.session.cart;
   }
