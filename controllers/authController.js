@@ -1,16 +1,17 @@
+const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const User = require("../models/userModel");
 
 exports.register = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const newUser = await User.create({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
-    username: req.body.username,
   });
+
   res.status(200).json({
     status: "success",
     newUser,
@@ -24,7 +25,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   if (!(await user.correctPassword(req.body.currentPassword, user.password))) {
     return next(new AppError("Current password is incorrect", 401));
-    console.log("Im here");
+  
   }
 
   user.password = req.body.newPassword;

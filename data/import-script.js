@@ -22,7 +22,7 @@ const products = JSON.parse(fs.readFileSync(`${__dirname}/data.json`, "utf-8"));
 
 const importData = async function(){
     try{
-        console.log(products);
+      
         
         await Product.create(products); 
 

@@ -47,7 +47,6 @@
             background-color: $color-gray-secondary;
             border-radius: .3rem;
             padding-left: 1rem;;
-            text-transform: capitalize;
             color: $color-black-quaternary;
             outline: none;
           }
@@ -63,7 +62,13 @@
           input:-webkit-autofill:active {
               -webkit-box-shadow: 0 0 0 30px $color-gray-secondary inset !important;
           }
-
+          input:focus {
+            outline: none;
+            border-bottom: 3px solid #55c57a;
+          }
+          input:focus:invalid {
+            border-bottom: 3px solid #ff7730;
+          }
       } 
 
       &__noaccount-box{
@@ -82,4 +87,9 @@
           font-size: 1.3rem;
           color: $color-gold-primary;
       }
+}
+
+.alert{
+    color: $color-alert-primary;
+    font-size: 1.2rem;
 }

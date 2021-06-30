@@ -1,22 +1,29 @@
 extends base
 include _navBar
+include _cart
 
+block overlay
+    #overlay.overlay.hidden
+        +cart
 block header
     header.header-product.content-center
-        +navBar(user)
+        +navBar
 block content
     main.main-bg-gray
+      
         section.login
             .login__form
-                form.logins(action="")
-                    h3.heading.heading--signup.heading--login Log IN
+                form.logins(action='/account/login' method='post')
+                    h3.heading.heading--signup.heading--login Log In
+                    if messages.error
+                        p.alert.alert--error= messages.error
                     .signup__username
                         .form__group
                             label(for="username") Email/Username
-                            input.input__class(type="text" id= "username" name="username")
+                            input.input__class(type="email" id= "username" name="username" required)
                         .form__group
                             label(for="password") Password
-                            input.input__class(type="password" id= "password" name="password")
+                            input.input__class(type="password" id= "password" name="password" required)
                     a.login__forgot-password(href="") Forgot your email or password?
                         button.login__btn(type="submit" value="Log In") Log In
                 .login__noaccount-box

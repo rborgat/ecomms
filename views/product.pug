@@ -5,13 +5,13 @@ include _sectionhome
 include _cart
 
 block overlay
-    .overlay 
+    .overlay.hidden
         +cart 
 
 block header
     header.product-header
         .product-header__nav.content-center
-            +navBar(user)
+            +navBar
         .product-header__title.content-center
             h1.heading.heading--secondary.heading--secondary-light #{productTitle}
 block content            

@@ -1,38 +1,26 @@
 mixin cart
-    .cart
-        .cart-header
-            h5.heading.heading--senary.heading--senary-checkout Cart(3)
-            a.cart-remove-items(href="") Remove All
-        .cart__items
-            .cart-item
-                .cart-gallery
-                    img(src="/assets/cart/image-xx99-mark-two-headphones.jpg", alt="")
-                .cart-description
-                    .cart-description__name XX99 MK II
-                    .cart-description__price $ 2,999
-                .cart-item__quantity
-                    input(type="number" placeholder="")
-                   
-            .cart-item
-                .cart-gallery
-                    img(src="/assets/cart/image-xx59-headphones.jpg", alt="")
-                .cart-description
-                    .cart-description__name XX59
-                    .cart-description__price $ 899
-                .cart-item__quantity
-                    input(type="number" placeholder="")
-            .cart-item
-                .cart-gallery
-                    img(src="/assets/cart/image-yx1-earphones.jpg", alt="")
-                .cart-description
-                    .cart-description__name YX1
-                    .cart-description__price $ 599
-                .cart-item__quantity
-                    input(type="number" placeholder="")
+    - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
+    .bag
+        .bag-header
+            h5.heading.heading--senary.heading--senary= `Cart(${quantity})`
+        #cartItems.bag__items
+            - if(session.cart)
+                each product in session.cart.items
+                    .bag-item(data-id=`${product._id}`)
+                        .bag-gallery
+                            img(src=`/assets/cart/image-${product.slug}.jpg`, alt=`${product.name}`)
+                        .bag-description
+                            .bag-description__name= product.cartName
+                            .bag-description__price= product.convertPrice
+                        .bag-item__quantity
+                           p.bag-cart-quantity=product.quantity
+        -if(session.cart)
+            #cartInfos.bag__infos
+                .bag-total.bag-info
+                    p.bag-total__word Total
+                    p.bag-total__total= session.cart.covertTotal
+            .bag-link
+                a(href="/shop/bag") Go to cart
+           
 
-        .cart__infos
-            .cart-total.cart-info
-                p.cart-total__word Total
-                p.cart-total__total $ 5,446
-        .cart-btn
-            a.btn.btn--gold.btn--gold-summary.btn-checkout(href="") Checkout
+        

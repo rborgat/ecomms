@@ -1,22 +1,50 @@
-.overlay{
-
+ .overlay{
+    width: 120rem;
+    margin: 0 auto;
     z-index: 300;
     height: 100vh;;
-    width: 100%;
-    position: fixed;
-    background-color: rgba($color-black-primary, 0.6);
-
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     display: flex;
     justify-content: flex-end;
-
-
-        display: none;
+  
+    @include respond("ipad"){
+        width: 100%;
+    }
 
     @include respond("iphone-max"){
-        justify-content: center;
+       
+       
     }
+} 
+
+.hidden{
+    display: none;
 }
+
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 9999;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.6rem 15rem;
+    -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  }
+  .alert--success {
+    background-color: #20bf6b;
+  }
+  .alert--error {
+    background-color: #eb4d4b;
+  }

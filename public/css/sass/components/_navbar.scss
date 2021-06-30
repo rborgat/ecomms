@@ -7,8 +7,7 @@
     @include respond("big-ipad"){
        height: 10rem;
        justify-content: flex-start;
-       width: 95%;
-       margin: 0 auto;
+       
     
     }
     @include respond ("ipad"){
@@ -67,7 +66,7 @@
        
     }
     &__user{
-
+        position: relative;
         @include respond("big-ipad"){
            margin-left: auto;
         
@@ -90,4 +89,18 @@
         
 
     }
+
+    .cart__quantity{
+        display:inline-block; 
+        position: absolute;
+        top:-17px;
+        font-size: 12px;
+        font-weight: 700;
+        left: 9.5px;
+        color: $color-gold-primary;
+    }
+}
+
+.nav__logout{
+    font-size: 1.2rem;
 }

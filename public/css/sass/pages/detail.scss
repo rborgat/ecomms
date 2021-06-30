@@ -107,7 +107,7 @@
            border: none;
            text-align: center;
            font-weight: 700;
-
+           outline: none;
            @include respond("iphone-max"){
                display: none;
            }

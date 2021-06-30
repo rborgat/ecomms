@@ -1,0 +1,46 @@
+extends base
+include _navBar
+include _cart
+
+
+block overlay
+    #overlay.overlay.hidden
+        +cart
+block header
+    header.header-product.content-center
+        +navBar
+block content
+    main#cart
+        section.cart.content-center
+        - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
+            .carts.content-center
+                h1.heading.heading--secondary.heading--secondary-cart Review your bag.
+                .cart-header
+                    h5.heading.heading--senary.heading--senary-checkout= `Cart(${quantity})`
+                    - if(quantity > 0)
+                        a.cart-remove-items(href="/delete-cart-items") Remove All
+                #cartItems.cart__items
+                    - if(session.cart)
+                        each product in session.cart.items
+                            .cart-item(data-id=`${product._id}`)
+                                .cart-gallery
+                                    img(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                                .cart-description
+                                    .cart-description__name= product.name
+                                    .cart-description__price= product.convertPrice
+                                .cart-item__quantity
+                                    input.item-cart-quantity(type="number" value=`${product.quantity}` min="1")
+                                    a.cart-item__remove-item(href=`/delete-cart-item/${product._id}`) Remove Item
+                -if(session.cart)
+                    #cartInfos.cart__infos
+                        .cart-total.cart-info
+                            p.cart-total__word Total
+                            p.cart-total__total= session.cart.covertTotal
+                    .cart-btn
+                        a.btn.btn--gold.btn--gold-checkout(href="/shop/checkout") Checkout
+ 
+
+
+                
+
+                

@@ -10,7 +10,7 @@
         padding-bottom: 15rem;
     }
     &__form{
-        height: 60rem;
+        height:50rem;
         width: 52rem;
         border-radius: 1rem;
         background-color: $color-light-primary;
@@ -22,7 +22,7 @@
     
         @include respond("iphone-max"){
             width: 42rem;
-            height: 78rem;
+            height: 70rem;
         }
       
     }
@@ -48,6 +48,7 @@
             text-transform: capitalize;
             color: $color-black-quaternary;
             outline: none;
+            transition: all .3s;
           }
           label{
               font-size: 1.2rem;
@@ -61,7 +62,16 @@
           input:-webkit-autofill:active {
               -webkit-box-shadow: 0 0 0 30px $color-gray-secondary inset !important;
           }
-
+          input:focus {
+            outline: none;
+            border-bottom: 3px solid #55c57a;
+          }
+          input:focus:invalid {
+            border-bottom: 3px solid #ff7730;
+          }
+          .sign__email{
+              text-transform: lowercase;
+          }
       }
      
       &__wrap{

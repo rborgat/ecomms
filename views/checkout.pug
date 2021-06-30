@@ -2,47 +2,49 @@ extends base
 include _navBar
 include _cart
 
+    
 block overlay
-    .overlay 
+    .overlay.hidden
         +cart
 
 block header
     header.header-product.content-center
-        +navBar(user)
+        +navBar
 block content
+    
     main.main-bg-gray
         .goback-button.content-center
              a(href="/") Go Back
         section.checkout.content-center
             .checkout__form
                 h3.heading.heading--tertiary.heading__from-checkout Checkout
-                form.form(action="")
+                form.form(action="" id="form-id")
                     h6.heading.heading__form-title Billing Details
                     .form__section.form__customer-info.form__wrap
                         .form__group
                             label(for="name") Name
-                            input.input__class(type="text" id= "name" name="name")
+                            input.input__class(type="text" id= "name" name="name" required)
                         .form__group
                             label(for="email") Email Address
-                            input(type="email" id="email" name="name")
+                            input(type="email" id="email" name="email" required)
                         .form__group
                             label(for="phone") Phone Number
-                            input(type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}")
+                            input(type="tel" id="phone" name="phone" placeholder="1(111)-111-1111" required)
                     h6.heading.heading__form-title Shipping Info
                     .form__section.form__address
                         .form__group
                             label(for="address") Address
-                            input(type="text" id= "address" name="address")
+                            input(type="text" id= "address" name="address" requred)
                     .form__wrap
                         .form__group
                             label(for="zipcode") Zip Code
-                            input(type="text" id="zipcode" name="zipcode")
+                            input(type="text" id="zipcode" name="zipcode" required)
                         .form__group
                             label(for="city") City 
-                            input(type="text" id="city" name="city")
+                            input(type="text" id="city" name="city" required)
                         .form__group
                             label(for="city") Country 
-                            input(type="text" id="city" name="city")
+                            input(type="text" id="city" name="city" required)
                     <!-- h6.heading.heading__form-title Payment Details
                     .form-payment
                         p.form-payment__method Payment Method
@@ -59,48 +61,32 @@ block content
                 .summary
                     h5.heading.heading--senary.heading--senary-checkout Summary
                     .summary__items
-                        .summary-item
-                            .summary-gallery
-                                img(src="/assets/cart/image-xx99-mark-two-headphones.jpg", alt="")
-                            .summary-description
-                                .summary-description__name XX99 MK II
-                                .summary-description__price $ 2,999
-                            .summary-quantity
-                                p.summary-quantity__para x1
-                                p.summary-quantity__para &nbsp
-                        .summary-item
-                            .summary-gallery
-                                img(src="/assets/cart/image-xx59-headphones.jpg", alt="")
-                            .summary-description
-                                .summary-description__name XX59
-                                .summary-description__price $ 899
-                            .summary-quantity
-                                p.summary-quantity__para x2
-                                p.summary-quantity__para &nbsp
-                        .summary-item
-                            .summary-gallery
-                                img(src="/assets/cart/image-yx1-earphones.jpg", alt="")
-                            .summary-description
-                                .summary-description__name YX1
-                                .summary-description__price $ 599
-                            .summary-quantity
-                                p.summary-quantity__para x1
-                                p.summary-quantity__para &nbsp
-                            
+                     - if(session.cart)
+                        each product in session.cart.items
+                            .summary-item(data-id=`${product._id}`)
+                                .summary-gallery
+                                    img(src=`/assets/cart/image-${product.slug}.jpg`, alt=`${product.name}`)
+                                .summary-description
+                                    .summary-description__name= product.cartName
+                                    .summary-description__price= product.convertPrice
+                                .summary-quantity
+                                    p.summary-quantity__para= `${product.quantity}X`
+                                    p.summary-quantity__para &nbsp
+                -if(session.cart)       
                     .summary__infos
                         .summary-total.cart-info
                             p.summary-total__word Total
-                            p.summary-total__total.cart-totals $5,396
+                            p.summary-total__total.cart-totals= session.cart.covertTotal
                         .summary-shipping.cart-info
                             p.summary-shipping__word Shipping
                             p.summary-shipping__total.cart-totals $ 50
                         .summary-vat.cart-info
                             p.summary-vat__word Vat (Included)
-                            p.summary-vat__total.cart-totals $ 1079
+                            p.summary-vat__total.cart-totals $ 0
                         .summary-grand-total.cart-info
                             p.summary-grand-total__word Grand Total
-                            p.summary-grand-total__total.cart-totals $ 5,446
+                            p.summary-grand-total__total.cart-totals= session.cart.grandTotal
                     .summary-btn
-                        a.btn.btn--gold.btn--gold-summary.btn--pay(href="") Continue & Pay
+                        button.btn--pay Continue & Pay
                     
 

@@ -1,35 +1,38 @@
 extends base
 include _navBar
+include _cart
 
+block overlay
+    #overlay.overlay.hidden
+        +cart
 block header
     header.header-product.content-center
-        +navBar(user)
+        +navBar
 block content
     main.main-bg-gray
         section.signup
             .signup__form
-                form.sign(action="")
+                form.sign
                     h3.heading.heading--signup Create Your Account
                     .signup__customerName.signup__wrap
                         .form__group
                             label(for="firstName") First Name 
-                            input.input__class(type="text" id= "firstName" name="firstName")
+                            input.input__class(type="text" id= "firstName" name="firstName" required)
                         .form__group
                             label(for="lastName") Last Name
-                            input(type="text" id="lastName" name="lastName")
+                            input(type="text" id="lastName" name="lastName" required)
                     .signup__username
                         .form__group
                             label(for="email") Email 
-                            input.input__class(type="email" id= "email" name="email")
-                        .form__group
-                            label(for="userName") Username
-                            input(type="text" id="userName" name="userName")
+                            input.sign__email(type="email" id= "email" name="email" required)
+                        
                     .signup__username.signup__wrap
                         .form__group
                             label(for="password") Password
-                            input.input__class(type="password" id= "password" name="password")
+                            input.input__class(type="password" id= "password" name="password" minlength="8" required)
                         .form__group
                             label(for="passwordConfirm") Confirm Password
-                            input(type="password" id="passwordConfirm" name="passwordConfirm")
+                            input(type="password" id="passwordConfirm" name="passwordConfirm" minlength="8" required)
                     button.signup__btn(type="submit" value="Sign up") Sign up
                     
+  

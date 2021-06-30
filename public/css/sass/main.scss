@@ -17,8 +17,11 @@
 @import 'components/navbar';
 @import 'components/header'; 
 
+
+@import 'pages/cart.scss';
 @import 'pages/checkout.scss';
 @import 'pages/detail.scss'; 
+@import 'pages/error.scss'; 
 @import 'pages/home.scss'; 
 @import 'pages/login.scss'; 
 @import 'pages/product.scss'; 

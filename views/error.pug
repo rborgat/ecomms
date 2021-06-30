@@ -1,0 +1,13 @@
+extends base
+include _navBar
+block header
+    header.header-product.content-center
+        +navBar
+block content
+  main.main.content-center
+    section.error
+      .error__container
+        .error__title
+            h2.heading-secondary.heading-secondary--error Uh oh! Something went wrong!   
+            h2.error__emoji 😢 🤯
+        .error__msg= msg

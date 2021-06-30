@@ -61,7 +61,7 @@ productSchema.virtual("formattedPrice").get(function () {
 });
 /* productSchema.post(/^find/, function (docs, next) {
   docs.price = helper.formatPrice(docs.price);
-  console.log(docs.price)
+
   next();
 }); */
 const Product = mongoose.model("Product", productSchema);

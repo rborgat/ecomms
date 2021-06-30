@@ -2,14 +2,22 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    date: Date,
-    orderNumber: {
-      type: String,
-      require: [true, "Order must an order number"],
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Product",
+      required: [true, "Must have a user"],
     },
-    total: {
+    products: {
+      type: Array,
+      required: [true, "Must have at least a product"],
+    },
+    shippingAddress: {
+      type: Object,
+      required: true,
+    },
+    Total: {
       type: Number,
-      required: [true, "Order must have a total"],
+      required: true,
     },
   },
   {
@@ -18,12 +26,6 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-/* orderSchema.virtual("orderItems", {
-  ref: "OrderItem",
-  foreignField: "order",
-  localField: "_id",
-});
- */
 const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;

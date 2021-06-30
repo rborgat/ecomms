@@ -19,7 +19,7 @@
       height: 5rem;
       font-size: 1.6rem;
       padding-left: 2.5rem;
-      text-transform: capitalize;
+      text-transform: capitalize; 
       border-radius: 0.8rem;
       color: $color-black-quaternary;
       border: 1px solid $color-black-tertiary;
@@ -43,8 +43,19 @@
     input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
+
+    input:focus {
+      outline: none;
+      border-bottom: 3px solid #55c57a;
+    }
+    input:focus:invalid {
+      border-bottom: 3px solid #ff7730;
+    }
     label {
       padding-bottom: 0.5rem;
+    }
+    #email{
+      text-transform: lowercase;
     }
     &__group {
       display: flex;

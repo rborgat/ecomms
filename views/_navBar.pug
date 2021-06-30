@@ -1,4 +1,5 @@
-mixin navBar(user)
+mixin navBar
+   - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
    nav.nav
       img.nav__el--hamburger(src="/assets/shared/tablet/icon-hamburger.svg", alt="hamburger")
       .nav__logo-box
@@ -9,10 +10,12 @@ mixin navBar(user)
          a.nav__el.nav__el--navlink(href='/product/headphones')   Headphones
          a.a.nav__el.nav__el--navlink(href='/product/speakers') Speakers
          a.a.nav__el.nav__el--navlink(href='/product/earphones') Earphones
-      .nav__user
+      #navCart.nav__user
          a.nav__.nav__el--cart(href="#")
             img.nav__img(src="/assets/shared/desktop/icon-cart.svg", alt="cart")
+            span.cart__quantity= quantity
          if user
+            a.nav__el.nav__logout(href="/account/logout") Log out
             a.nav__el(href='#')
                if user.image
                   .nav__el.nav__el--img-box
@@ -20,6 +23,7 @@ mixin navBar(user)
                else 
                   .nav__el.nav__el--username-box
                      p.nav__username=user.firstName.split("")[0] + user.lastName.split("")[0]
+               
          else
             a.nav__el.nav__el--sign-up(href='/login') Log In
       

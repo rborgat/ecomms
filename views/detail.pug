@@ -6,16 +6,16 @@ include _sectionhome
 include _cart
 
 block overlay
-    .overlay 
+    .overlay.hidden
         +cart
 block header
     header.header-product.content-center
-        +navBar(user)
+        +navBar
 block content
     main
         .goback-button.content-center
             a(href="/") Go Back
-        section.detail-item
+        section.detail-item(data-id =`${product.id}`)
             .detail-item__gallery
                 img.section-product-1__img.img__deskPath(src=`${product.image.desktop.split("").slice(1).join("")}`, alt=`${product.name} image`)
                 img.section-product-1__img.img__tabPath(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
@@ -31,9 +31,9 @@ block content
                 p.detail-item__description= product.description
                 p.detail-item__price= product.formattedPrice
                 .detail-item__cart-container
-                    input.detail-item__cart-input(type="number" name="cart-input" placeholder="1")
+                    input.detail-item__cart-input(type="number" name="cart-input" value="1" min="1")
                     .detail-item__cart-button
-                        a.btn.btn--gold(href="/") add to cart
+                        a.btn.btn--gold.btn__cart(href="#") add to cart
         section.detail-features
             .detail-features__features-container
                 h.heading.heading--tertiary.detail-features__heading Features

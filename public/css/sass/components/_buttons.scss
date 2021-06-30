@@ -17,15 +17,8 @@
         font-size:1.8rem;
     }
 
-    &--gold-summary{
-      
-            width: 100%;
-            @include respond ("ipad"){
-                padding-left: auto;
-                padding-right: auto;
-                
-            }
-        
+    &--gold-checkout{
+        padding: 1.2rem 6rem;
     }
     &--gold:link, &--gold:visited{
         background-color: $color-gold-primary;;
@@ -61,3 +54,21 @@
     }
 
 }
+
+.btn--pay{
+    width: 100%;
+    padding: 1.8rem 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: .17rem;
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition:all .5s;
+    background-color: $color-gold-primary;;
+    color: $color-light-primary; 
+    border: none;
+   
+  }
+
+  .btn--pay:hover, .btn--pay:active{
+    background-color: $color-gold-secondary;;
+  }
