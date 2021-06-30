@@ -37,6 +37,7 @@ const createNewOrder = catchAsync(async (session, req) => {
     shippingAddress,
     total: req.session.cart.totalPrice,
   });
+  delete req.session.cart;
 });
 exports.webhookCheckout = (req, res, next) => {
   
