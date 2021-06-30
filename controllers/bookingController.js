@@ -32,7 +32,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createNewOrder = catchAsync(async (session, req) => {
   const shippingAddress = JSON.parse(session.client_reference_id);
   await Order.create({
-    user: req.session.passport.user,
+    user: req.session,
     products: req.session.cart.ids,
     shippingAddress,
     total: req.session.cart.totalPrice,
