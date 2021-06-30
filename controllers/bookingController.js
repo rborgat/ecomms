@@ -32,13 +32,11 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createNewOrder = catchAsync(async (session, req) => {
   const shippingAddress = JSON.parse(session.client_reference_id);
   await Order.create({
-    user: "60d613e99e7c5f072f2145d9",
-    products: ["60d613e99e7c5f072f2145d9"],
+    user: req.user,
+    products: req.products,
     shippingAddress,
-    total: 1200,
-    session: req.session,
+    total: req.total,
   });
-  delete req.session.cart;
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
@@ -55,7 +53,14 @@ exports.webhookCheckout = (req, res, next) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    createNewOrder(event.data.object, req);
+    const cartInfo = {
+      user: req.user_id,
+      products: req.session.cart.ids,
+      total: req.session.cart.totalPrice,
+    };
+    createNewOrder(event.data.object, cartInfo);
+
+    delete req.session.cart;
   }
 
   res.status(200).json({ received: true });
