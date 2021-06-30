@@ -30,12 +30,13 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createNewOrder = catchAsync(async (session, req) => {
-  //const shippingAddress = JSON.parse(session.client_reference_id);
+  const shippingAddress = JSON.parse(session.client_reference_id);
   await Order.create({
     user: "60d613e99e7c5f072f2145d9",
     products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: { address: "1123 garibaldi street" },
+    shippingAddress,
     total: 1200,
+    session: req.session,
   });
   delete req.session.cart;
 });

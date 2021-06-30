@@ -10,14 +10,14 @@ import bookingView from "../js/views/bookingView";
 import * as model from "./model"
 
 
-const controlCompletePayment = async function (customerInfo) {
+const controlCompletePayment = async function (customerInfo, data) {
    const stripe = Stripe(
   "pk_test_51J7lt6BzMjIOK0cYd9hrmA8TDUFvevXW0fNiVaKlFSNsJmZJhW6LKuQqKLZkKHKPQKf4C0ooLRUWuuB4qfk2Dmj900VI1maLkw"
 );
  
   try {
 
-    const answer = model.validateForms
+    const answer = model.validateForms(data); 
 
     if(!answer) {
           showAlert("error", "Please fill out the form completely"); 

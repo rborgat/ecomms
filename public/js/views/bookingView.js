@@ -11,7 +11,7 @@ class BookView{
             const data = [...new FormData(document.querySelector(".form"))]
             
             const dataObj = Object.fromEntries(data); 
-            handler(dataObj); 
+            handler(dataObj, data); 
         })
     }
   
