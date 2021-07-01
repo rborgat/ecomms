@@ -27,7 +27,7 @@ const controlCompletePayment = async function (customerInfo, data) {
       data: {
         customerInfo,
       },
-      withCredentials: true,
+     // withCredentials: true,
     });
 
     await stripe.redirectToCheckout({

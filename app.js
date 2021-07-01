@@ -4,6 +4,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const path = require("path");
+const cors = require("cors");
 
 const compression = require("compression");
 const passport = require("passport");
@@ -21,11 +22,12 @@ const bookingController = require("./controllers/bookingController");
 const viewRouter = require("./routes/viewRoute");
 
 const app = express();
-
+app.enable("trust proxy");
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(cors());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -50,7 +52,6 @@ app.use(hpp());
 app.use(compression());
 
 app.use(flash());
-app.set("trust proxy", 1);
 
 const sessionStore = new MongoStore({
   mongoUrl: process.env.DATABASE.replace(
@@ -69,8 +70,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
-      secure: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
       sameSite: "none",
+      httpOnly: true,
     },
   })
 );
