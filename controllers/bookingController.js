@@ -5,15 +5,16 @@ const Order = require("../models/orderModel");
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //const address = Object.fromEntries(req.body);
   console.log(req.session);
-  
-  const str = JSON.stringify(req.session);
+    const info = req.body.customerInfo; 
+    info.session = req.session,
+    buiconst str = JSON.stringify(info);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
-    client_reference_id: str,
+    client_reference_id: "akdkadkdksdkd",
     line_items: [
       {
         name: "Audiophile Products",
