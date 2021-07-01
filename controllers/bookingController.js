@@ -38,11 +38,11 @@ const createNewOrder = catchAsync(async (session, req) => {
   await Order.create({
     user: sessions.session.passport.user,
     products: sessions.session.ids,
-    shippingAddress: sessions.session.shippingAddress,
+    shippingAddress: { shipping: "adadadd" },
     total: 12748,
     headers: sessions,
   });
- 
+
   await Session.deleteOne({ _id: session.client_reference_id });
 });
 exports.webhookCheckout = (req, res, next) => {
