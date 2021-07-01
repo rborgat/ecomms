@@ -32,15 +32,17 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-const createNewOrder = catchAsync(async (session, req) => {
-  const sessions = await Session.findOne({ _id: session.client_reference_id });
+const createNewOrder = catchAsync(async (sessions, req) => {
+  const { session } = await Session.findOne({
+    _id: sessions.client_reference_id,
+  });
 
   const order = await Order.create({
     user: "60d613e99e7c5f072f2145d9",
     products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: sessions.shippingAddress,
+    shippingAddress: session,
     total: 234,
-    headers: session.client_reference_id,
+    headers: sessions.client_reference_id,
   });
 });
 exports.webhookCheckout = (req, res, next) => {
