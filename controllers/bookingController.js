@@ -14,7 +14,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
-    client_reference_id: req.user._id,
+    client_reference_id: "1992324244242424",
     metadata: {
       cart: cart,
     },
