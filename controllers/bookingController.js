@@ -38,10 +38,10 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createNewOrder = catchAsync(async (session, req) => {
   const sessions = await Session.findOne({ _id: session.client_reference_id });
-  
+ 
   await Order.create({
-    user: ["60d613e99e7c5f072f2145d9"],
-    products: ["60d613e99e7c5f072f2145d9"],
+    user: sessions.session.passport.user,
+    products: sessions.session.ids,
     shippingAddress: { address: "1123i4" },
     total: 1200,
     headers: sessions,
