@@ -68,7 +68,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 
   
   req.session.cart = newCart;
-  console.log(req.sessionID);
+
   res.status(200).json({
     newCart,
   });

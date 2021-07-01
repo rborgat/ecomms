@@ -36,8 +36,8 @@ const createNewOrder = catchAsync(async (session, req) => {
   const sessions = await Session.findOne({ _id: session.client_reference_id });
 
   await Order.create({
-    user: sessions.session.passport.user,
-    products: sessions.session.ids,
+    user: sessions.session?.passport?.user,
+    products: sessions.session?.ids,
     shippingAddress: { shipping: "adadadd" },
     total: 12748,
     headers: sessions,
