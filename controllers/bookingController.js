@@ -42,7 +42,7 @@ const createNewOrder = catchAsync(async (sessions, req) => {
   const order = await Order.create({
     user: "60d613e99e7c5f072f2145d9",
     products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: findSession,
+    shippingAddress: findSession.session
     total: 234,
     headers: sessions.client_reference_id,
   });
