@@ -55,7 +55,7 @@ exports.webhookCheckout = (req, res, next) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    createNewOrder(event.data.object, req.headers);
+    createNewOrder(event.data.object, req.session);
   }
 
   res.status(200).json({ received: true });
