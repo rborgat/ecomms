@@ -4,11 +4,7 @@ const Order = require("../models/orderModel");
 const Session = require("../models/sessionModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
-  //const address = Object.fromEntries(req.body);
-  /*   console.log(req.session);
-  const info = req.body.customerInfo;
-  info.session = req.session;*/
-  const cart = JSON.stringify(req.session.cart);
+  req.session.shippingAddress = req.body.customerInfo;
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -38,14 +34,16 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createNewOrder = catchAsync(async (session, req) => {
   const sessions = await Session.findOne({ _id: session.client_reference_id });
- 
+
   await Order.create({
     user: sessions.session.passport.user,
     products: sessions.session.ids,
-    shippingAddress: { address: "1123i4" },
-    total: 1200,
+    shippingAddress: sessions.session.shippingAddress,
+    total: sessions.session.totalPrice,
     headers: sessions,
   });
+
+  await Session.deleteOne({ _id: session.client_reference_id });
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
