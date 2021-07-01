@@ -50,6 +50,7 @@ app.use(hpp());
 app.use(compression());
 
 app.use(flash());
+app.set("trust proxy", 1);
 
 const sessionStore = new MongoStore({
   mongoUrl: process.env.DATABASE.replace(
@@ -69,6 +70,7 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       secure: true,
+      sameSite: "none",
     },
   })
 );
