@@ -39,19 +39,6 @@ app.use(
     },
   })
 );
-app.post(
-  "/webhook-checkout",
-  express.raw({ type: "application/json" }),
-  bookingController.webhookCheckout
-);
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
-app.use(mongoSanitize());
-app.use(xss());
-app.use(hpp());
-app.use(compression());
-
-app.use(flash());
 
 const sessionStore = new MongoStore({
   mongoUrl: process.env.DATABASE.replace(
@@ -81,6 +68,21 @@ require("./utils/passport");
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.post(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  bookingController.webhookCheckout
+);
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(mongoSanitize());
+app.use(xss());
+app.use(hpp());
+app.use(compression());
+
+app.use(flash());
+
+
 
 app.use(async function (req, res, next) {
   res.locals.session = req.session;

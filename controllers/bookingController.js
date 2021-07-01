@@ -61,7 +61,7 @@ exports.webhookCheckout = (req, res, next) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    createNewOrder(event.data.object);
+    createNewOrder(event.data.object, req.session);
     delete req.session.cart;
   }
 
