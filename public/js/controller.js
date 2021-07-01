@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -6,40 +5,35 @@ import "../css/sass/main.scss";
 import { showAlert } from "./alerts";
 import cartView from "../js/views/cartView";
 import userView from "../js/views/userView";
-import bookingView from "../js/views/bookingView"; 
-import * as model from "./model"
-
+import bookingView from "../js/views/bookingView";
+import * as model from "./model";
 
 const controlCompletePayment = async function (customerInfo, data) {
-   const stripe = Stripe(
-  "pk_test_51J7lt6BzMjIOK0cYd9hrmA8TDUFvevXW0fNiVaKlFSNsJmZJhW6LKuQqKLZkKHKPQKf4C0ooLRUWuuB4qfk2Dmj900VI1maLkw"
-);
- 
+  const stripe = Stripe(
+    "pk_test_51J7lt6BzMjIOK0cYd9hrmA8TDUFvevXW0fNiVaKlFSNsJmZJhW6LKuQqKLZkKHKPQKf4C0ooLRUWuuB4qfk2Dmj900VI1maLkw"
+  );
+
   try {
+    const answer = model.validateForms(data);
 
-    const answer = model.validateForms(data); 
+    if (!answer) {
+      showAlert("error", "Please fill out the form completely");
+      return;
+    }
 
-    if(!answer) {
-          showAlert("error", "Please fill out the form completely"); 
-          return; 
-      }  
-      
     const session = await axios({
       method: "POST",
       url: "/api/v1/booking/checkout-session",
-      data:{
+      data: {
         customerInfo,
-      }
-
+      },
+      withCredentials: true,
     });
 
     await stripe.redirectToCheckout({
       sessionId: session.data.session.id,
-    }); 
-
-
+    });
   } catch (err) {
-   
     showAlert("error", err);
   }
 };
@@ -56,8 +50,6 @@ const controlAddToCart = async function (id, quantity) {
     });
 
     location.assign("/shop/bag");
-
-
   } catch (err) {
     console.log(err.response.data.message);
   }
@@ -77,7 +69,7 @@ const controlUpdateCartItem = async function (id, quantity) {
   $('#navCart').load(document.URL +  ' #navCart') */
     location.reload(true);
   } catch (err) {
-    showAlert("error", "Cannot add item to cart, please try again later!")
+    showAlert("error", "Cannot add item to cart, please try again later!");
   }
 };
 
@@ -102,8 +94,6 @@ const controlUserSignUp = async function (formData) {
       }, 1500);
     }
   } catch (err) {
-
-
     showAlert("error", "Error creating acccount! Try again");
   }
 };
@@ -127,7 +117,7 @@ const init = function () {
   cartView.removeCart();
   cartView.updateCartItem(controlUpdateCartItem);
   userView.addHandlerSignUpForm(controlUserSignUp);
-  bookingView.addHandlerPaybtn(controlCompletePayment); 
+  bookingView.addHandlerPaybtn(controlCompletePayment);
 };
 
 init();
