@@ -52,7 +52,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     store: sessionStore,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       secure: true,
