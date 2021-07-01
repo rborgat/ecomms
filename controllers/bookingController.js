@@ -6,8 +6,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //const address = Object.fromEntries(req.body);
   /*   console.log(req.session);
   const info = req.body.customerInfo;
-  info.session = req.session;
-  const str = JSON.stringify(req.body.customerInfo); */
+  info.session = req.session;*/
+  const cart = JSON.stringify(req.session.cart);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -16,7 +16,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     customer_email: req.body.customerInfo.email,
     client_reference_id: req.user._id,
     metadata: {
-      cart: req.session.cart
+      cart: cart,
     },
     line_items: [
       {
@@ -40,7 +40,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createNewOrder = catchAsync(async (session, req) => {
   const user = session.client_reference_id;
-  const products = session.metadata; 
+  const products = session.metadata;
   await Order.create({
     user: user,
     products: ["60d613e99e7c5f072f2145d9"],
