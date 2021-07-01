@@ -13,7 +13,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
-    client_reference_id: str
+    client_reference_id: str,
     line_items: [
       {
         name: "Audiophile Products",
