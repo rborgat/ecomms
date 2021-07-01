@@ -38,13 +38,11 @@ const createNewOrder = catchAsync(async (sessions, req) => {
   });
 
   if (findSession) {
-    const obj = JSON.parse(findSession);
-    const session = JSON.parse(obj.session);
-
+    const session = JSON.parse(findSession);
     await Order.create({
       user: "60d613e99e7c5f072f2145d9",
       products: ["60d613e99e7c5f072f2145d9"],
-      shippingAddress: session.shippingAddress,
+      shippingAddress: session,
       total: 234,
       headers: "afsdadsfdsfdfds",
     });
