@@ -46,6 +46,11 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     total: sessionJson.cart.totalPrice,
     headers: sessionJson,
   });
+
+  delete sessionJson.cart;
+
+  findSession["_doc"].session = JSON.stringify(sessionJson);
+  await findSession.findOneAndUpdate();
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
