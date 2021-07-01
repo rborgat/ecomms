@@ -40,10 +40,10 @@ const createNewOrder = catchAsync(async (sessions, req) => {
   const sessionJson = JSON.parse(findSession["_doc"].session);
 
   await Order.create({
-    user: "60d613e99e7c5f072f2145d9",
-    products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: findSession,
-    total: 234,
+    user: sessionJson.passport.user,
+    products: sessionJson.cart.ids,
+    shippingAddress: sessionJson.shippingAddress,
+    total: sessionJson.cart.totalPrice,
     headers: sessionJson,
   });
 });
