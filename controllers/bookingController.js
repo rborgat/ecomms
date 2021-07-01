@@ -38,10 +38,12 @@ const createNewOrder = catchAsync(async (session, req) => {
     total: 1200,
     session: req,
   });
+
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
-
+    console.log(req.headers);
+    
   let event;
   try {
     event = stripe.webhooks.constructEvent(
@@ -59,7 +61,7 @@ exports.webhookCheckout = (req, res, next) => {
       products: req.session.cart.ids,
       total: req.session.cart.totalPrice,
     };
-    createNewOrder(event.data.object, req.session);
+    createNewOrder(event.data.object, req.headers);
 
     delete req.session.cart;
   }
