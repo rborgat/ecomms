@@ -36,14 +36,13 @@ const createNewOrder = catchAsync(async (session, req) => {
     products: ["60d613e99e7c5f072f2145d9"],
     shippingAddress: shippingAddress,
     total: 1200,
-    session: req,
+    headers: req,
   });
-
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
-    console.log(req.headers);
-    
+  console.log(req.headers);
+
   let event;
   try {
     event = stripe.webhooks.constructEvent(
@@ -56,14 +55,7 @@ exports.webhookCheckout = (req, res, next) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    const cartInfo = {
-      user: req.user_id,
-      products: req.session.cart.ids,
-      total: req.session.cart.totalPrice,
-    };
     createNewOrder(event.data.object, req.headers);
-
-    delete req.session.cart;
   }
 
   res.status(200).json({ received: true });

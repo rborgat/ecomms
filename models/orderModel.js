@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    session: {
+    headers: {
       type: Object,
     },
   },
