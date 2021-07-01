@@ -37,16 +37,13 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     _id: sessions.client_reference_id,
   });
 
-  if (findSession) {
-    const session = JSON.parse(findSession);
-    await Order.create({
-      user: "60d613e99e7c5f072f2145d9",
-      products: ["60d613e99e7c5f072f2145d9"],
-      shippingAddress: session,
-      total: 234,
-      headers: "afsdadsfdsfdfds",
-    });
-  }
+  await Order.create({
+    user: "60d613e99e7c5f072f2145d9",
+    products: ["60d613e99e7c5f072f2145d9"],
+    shippingAddress: findSession,
+    total: 234,
+    headers: "afsdadsfdsfdfds",
+  });
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
