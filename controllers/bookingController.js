@@ -33,24 +33,27 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createNewOrder = catchAsync(async (sessions, req) => {
-  const findSession = await Session.findOne({
+  const session = await Session.findOne({
     _id: sessions.client_reference_id,
   });
 
-  const sessionJson = JSON.parse(findSession["_doc"].session);
+  if (session) {
+    const sessionJson = JSON.parse(session["_doc"].session);
 
-  await Order.create({
-    user: sessionJson.passport.user,
-    products: sessionJson.cart.ids,
-    shippingAddress: sessionJson.shippingAddress,
-    total: sessionJson.cart.totalPrice,
-    headers: sessionJson,
-  });
+    await Order.create({
+      user: sessionJson.passport.user,
+      products: sessionJson.cart.ids,
+      shippingAddress: sessionJson.shippingAddress,
+      total: sessionJson.cart.totalPrice,
+      headers: sessionJson,
+    });
 
-  delete sessionJson.cart;
+    delete sessionJson.cart;
 
-  findSession["_doc"].session = JSON.stringify(sessionJson);
-  await findSession.findOneAndUpdate();
+    session["_doc"].session = JSON.stringify(sessionJson);
+
+    session.save();
+  }
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
