@@ -38,7 +38,7 @@ const createNewOrder = catchAsync(async (session, req) => {
   const order = await Order.create({
     user: "60d613e99e7c5f072f2145d9",
     products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: sessions,
+    shippingAddress: sessions.session.shippingAddress,
     total: 234,
     headers: session.client_reference_id,
   });
