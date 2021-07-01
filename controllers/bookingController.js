@@ -5,9 +5,9 @@ const Order = require("../models/orderModel");
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //const address = Object.fromEntries(req.body);
   console.log(req.session);
-    const info = req.body.customerInfo; 
-    info.session = req.session,
-    buiconst str = JSON.stringify(info);
+  const info = req.body.customerInfo;
+  info.session = req.session;
+  const str = JSON.stringify(info);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
