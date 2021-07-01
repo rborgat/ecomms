@@ -36,13 +36,12 @@ const createNewOrder = catchAsync(async (session, req) => {
   const sessions = await Session.findOne({ _id: session.client_reference_id });
 
   const order = await Order.create({
-    user: sessions.session?.passport.user,
-    products: sessions.session.ids,
-    shippingAddress: sessions.session.shippingAddress,
-    total: sessions.session.totalPrice,
-    headers: sessions,
+    user: "60d613e99e7c5f072f2145d9",
+    products: ["60d613e99e7c5f072f2145d9"],
+    shippingAddress: { address: "adddsd" },
+    total: 234,
+    headers: session.client_reference_id,
   });
-
 });
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
