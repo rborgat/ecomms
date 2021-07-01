@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const catchAsync = require("../utils/catchAsync");
 const Order = require("../models/orderModel");
+const Session = require("../models/sessionModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //const address = Object.fromEntries(req.body);
@@ -14,10 +15,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
-    client_reference_id: "1992324244242424",
-    metadata: {
-      cart: cart,
-    },
+    client_reference_id: req.sessionID,
     line_items: [
       {
         name: "Audiophile Products",
@@ -39,14 +37,14 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createNewOrder = catchAsync(async (session, req) => {
-  const user = session.client_reference_id;
-  const products = session.metadata;
+  const sessions = await Session.findOne({ _id: session.client_reference_id });
+  
   await Order.create({
-    user: user,
+    user: ["60d613e99e7c5f072f2145d9"],
     products: ["60d613e99e7c5f072f2145d9"],
     shippingAddress: { address: "1123i4" },
     total: 1200,
-    headers: products,
+    headers: sessions,
   });
 });
 exports.webhookCheckout = (req, res, next) => {

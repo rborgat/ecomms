@@ -68,7 +68,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 
   
   req.session.cart = newCart;
-  console.log(req.session.cart);
+  console.log(req.sessionID);
   res.status(200).json({
     newCart,
   });
@@ -105,7 +105,7 @@ exports.deleteCartItem = (req, res, next) => {
   newCart.deleteItem(id);
 
   req.session.cart = newCart;
-  console.log(req.session.cart);
+ 
   
   if (req.session.cart.items.length === 0) {
     delete req.session.cart;
