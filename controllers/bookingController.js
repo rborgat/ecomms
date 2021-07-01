@@ -15,7 +15,9 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
     client_reference_id: req.user._id,
-    metadata: req.session.cart,
+    metadata: {
+      cart: req.session.cart
+    },
     line_items: [
       {
         name: "Audiophile Products",
