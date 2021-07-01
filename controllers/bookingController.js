@@ -33,14 +33,16 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createNewOrder = catchAsync(async (sessions, req) => {
-  const { session } = await Session.findOne({
+  const findSession = await Session.findOne({
     _id: sessions.client_reference_id,
   });
+
+  const session = JSON.parse(findSession.session);
 
   const order = await Order.create({
     user: "60d613e99e7c5f072f2145d9",
     products: ["60d613e99e7c5f072f2145d9"],
-    shippingAddress: session,
+    shippingAddress: session.shippingAddress,
     total: 234,
     headers: sessions.client_reference_id,
   });
