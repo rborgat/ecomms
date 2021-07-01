@@ -14,7 +14,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/shop/bag`,
     customer_email: req.body.customerInfo.email,
-    client_reference_id: "adddadlksdldldsldskdslklkds",
+    client_reference_id: req.user._id,
+    metadata: req.session.cart,
     line_items: [
       {
         name: "Audiophile Products",
@@ -36,13 +37,14 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createNewOrder = catchAsync(async (session, req) => {
-  //const shippingAddress = JSON.parse(session.client_reference_id);
+  const user = session.client_reference_id;
+  const products = session.metadata; 
   await Order.create({
-    user: ["60d613e99e7c5f072f2145d9"],
+    user: user,
     products: ["60d613e99e7c5f072f2145d9"],
     shippingAddress: { address: "1123i4" },
     total: 1200,
-    headers: req,
+    headers: products,
   });
 });
 exports.webhookCheckout = (req, res, next) => {
