@@ -26,9 +26,9 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     ],
   });
 
-  if (session.success_url) {
+  /* if (session.success_url) {
     delete req.session.cart;
-  }
+  } */
   res.status(200).json({
     status: "success",
     session,
@@ -61,7 +61,8 @@ exports.webhookCheckout = (req, res, next) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    createNewOrder(event.data.object, req.session);
+    createNewOrder(event.data.object);
+    delete req.session.cart;
   }
 
   res.status(200).json({ received: true });
