@@ -49,10 +49,11 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     });
 
     delete sessionJson.cart;
+    delete sessionJson.shippingAddress;
 
     session["_doc"].session = JSON.stringify(sessionJson);
 
-    Session.findOneAndUpdate(sessions.client_reference_id, session);
+    await Session.findOneAndUpdate(sessions.client_reference_id, session);
   }
 });
 exports.webhookCheckout = (req, res, next) => {
