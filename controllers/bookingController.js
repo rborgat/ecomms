@@ -4,7 +4,7 @@ const Order = require("../models/orderModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //const address = Object.fromEntries(req.body);
-/*   console.log(req.session);
+  /*   console.log(req.session);
   const info = req.body.customerInfo;
   info.session = req.session;
   const str = JSON.stringify(req.body.customerInfo); */
@@ -26,6 +26,9 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     ],
   });
 
+  if (session.success_url) {
+    delete req.session.cart;
+  }
   res.status(200).json({
     status: "success",
     session,
