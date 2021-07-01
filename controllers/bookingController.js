@@ -42,7 +42,7 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     products: ["60d613e99e7c5f072f2145d9"],
     shippingAddress: findSession,
     total: 234,
-    headers: "afsdadsfdsfdfds",
+    headers: findSession.session,
   });
 });
 exports.webhookCheckout = (req, res, next) => {
