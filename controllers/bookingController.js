@@ -46,7 +46,7 @@ const createNewOrder = catchAsync(async (sessions, req) => {
         user: sessionJson?.passport?.user,
         products: sessionJson?.cart?.ids,
         shippingAddress: sessionJson?.shippingAddress,
-        total: sessionJson?.cart.totalPrice,
+        total: sessionJson?.cart?.totalPrice,
         headers: sessionJson,
       });
 
