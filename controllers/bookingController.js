@@ -43,8 +43,8 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     await Order.create({
       user: sessionJson?.passport.user,
       products: sessionJson?.cart.ids,
-      shippingAddress: sessionJson.shippingAddress,
-      total: sessionJson.cart.totalPrice,
+      shippingAddress: sessionJson?.shippingAddress,
+      total: sessionJson.?cart.totalPrice,
       headers: sessionJson,
     });
 
