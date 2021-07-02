@@ -62,7 +62,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   const { id, quantity } = req.body;
   const product = await Product.findById(id);
 
-  const newCart = new Cart(req.session.cart?.items ,req.session?.cart?.ids);
+  const newCart = new Cart(req?.session?.cart?.items ,req?.session.cart?.ids);
 
   newCart.saveItem(product, id, quantity);
 
