@@ -117,6 +117,8 @@ const init = function () {
   cartView.removeCart();
   cartView.updateCartItem(controlUpdateCartItem);
   userView.addHandlerSignUpForm(controlUserSignUp);
+  userView.addProfileHandler();
+  userView.removeProfile(); 
   bookingView.addHandlerPaybtn(controlCompletePayment);
 };
 

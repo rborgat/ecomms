@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema(
     total: {
       type: Number,
     },
-    headers: {
+    orderItems: {
       type: Object,
     },
   },

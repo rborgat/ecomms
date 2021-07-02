@@ -5,6 +5,7 @@ const Session = require("../models/sessionModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   req.session.shippingAddress = req.body.customerInfo;
+  
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -42,12 +43,21 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     if (session["_doc"].session) {
       sessionJson = JSON.parse(session["_doc"].session);
 
+      let orderItems; 
+        if(sessionJson.cart.items){
+             orderItems = sessionJson.cart.items.map((obj => {
+            return {
+              [obj._id]: obj.quantity,
+            }
+          }))
+        }
+
       await Order.create({
         user: sessionJson?.passport?.user,
         products: sessionJson?.cart?.ids,
         shippingAddress: sessionJson?.shippingAddress,
         total: sessionJson?.cart?.totalPrice,
-        headers: sessionJson,
+        orderItems: orderItems,
       });
 
       delete sessionJson.cart;

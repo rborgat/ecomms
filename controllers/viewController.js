@@ -3,6 +3,7 @@ const Cart = require("../utils/cart");
 const Product = require("../models/productModel");
 const AppError = require("../utils/appError");
 
+
 exports.homePage = catchAsync(async (req, res, next) => {
   res.status(200).render("home", {
     title: "Home Page",
@@ -41,18 +42,32 @@ exports.productPage = catchAsync(async (req, res, next) => {
 });
 
 exports.checkoutPage = (req, res, next) => {
+  
+  if(!req.user && req.session.cart){
+   return res.redirect("/login"); 
+  }
+
+  if(!req.user || !req.session.cart){
+    return res.redirect("/"); 
+  }
   res.status(200).render("checkout", {
     title: "Checkout",
   });
 };
 
 exports.signup = (req, res, next) => {
+  if(req.user){
+    return  res.redirect("/"); 
+  }
   res.status(200).render("signup", {
     title: "Sign up",
   });
 };
 
 exports.login = (req, res, next) => {
+  if(req.user){
+   return  res.redirect("/"); 
+  }
   res.status(200).render("login", {
     title: "Log in",
   });
@@ -68,6 +83,8 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 
   
   req.session.cart = newCart;
+
+  console.log(req.session.cart)
 
   res.status(200).json({
     newCart,
@@ -118,3 +135,11 @@ exports.cart = (req, res, next) => {
     title: "Cart",
   });
 };
+
+exports.purchasedProduct = (req, res, next) => {
+  
+  res.status(200).render("purchased", {
+    title: "My-Orders",
+  });
+
+}

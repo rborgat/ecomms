@@ -1,6 +1,7 @@
 .nav{
     height: 8rem;
     display: flex;
+    position: relative;
   
     justify-content:space-between;
     align-items: center; 
@@ -48,7 +49,13 @@
 
     }
     &__el--sign-up{
-        margin-right: 2rem;
+     
+   
+    }
+    #signup__nav{
+   
+        padding-left: 0px;
+        margin-left: 3.5rem;
     }
     &__el--img-box{
         width: 3rem; 
@@ -66,38 +73,55 @@
        
     }
     &__user{
-        position: relative;
+    position: relative;
+ 
         @include respond("big-ipad"){
            margin-left: auto;
         
         }
+       
     }
     &__el--username-box{
-        width: 2.7rem;
-        height:2.7rem;
+        display: inline-block;
+        width: 2.8rem;
+        height:2.8rem;
         border-radius: 50%;
         position: relative;
-        background-color: $color-gray-primary;
+        background-color: $color-light-primary;
         text-align: center; 
+        font-size: 1.6rem;
+        transition: all .1s;
+        
      
     }
+    &__el--username-box:hover, &__el--username-box:active{
+        border: 2px solid $color-gold-secondary; 
+    }
+    
     &__username{
         color: $color-gold-primary; 
         font-weight: 700;
+        display: inline-block;
         @include centerAbsolute; 
 
         
 
     }
-
+    &__el--cart{
+        display: inline-block;
+        height: 4rem;
+        padding-top: 1.5rem;
+    }
     .cart__quantity{
-        display:inline-block; 
+        display:block; 
         position: absolute;
-        top:-17px;
+        top:-.2rem;
         font-size: 12px;
         font-weight: 700;
-        left: 9.5px;
+        left: 8.5px;
         color: $color-gold-primary;
+        height: 2.8rem;
+     
     }
 }
 

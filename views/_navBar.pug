@@ -11,22 +11,37 @@ mixin navBar
          a.a.nav__el.nav__el--navlink(href='/product/speakers') Speakers
          a.a.nav__el.nav__el--navlink(href='/product/earphones') Earphones
       #navCart.nav__user
-         a.nav__.nav__el--cart(href="#")
+         a.nav__.nav__el--cart
             img.nav__img(src="/assets/shared/desktop/icon-cart.svg", alt="cart")
             span.cart__quantity= quantity
          if user
-            a.nav__el.nav__logout(href="/account/logout") Log out
-            a.nav__el(href='#')
+            a.nav__el.nav__el-profile(href='#')
                if user.image
                   .nav__el.nav__el--img-box
                      img.nav__user-img(src=`/img/users/user-1.jpg`)
                else 
                   .nav__el.nav__el--username-box
-                     p.nav__username=user.firstName.split("")[0] + user.lastName.split("")[0]
-               
+                     p.nav__username=user.firstName.split("")[0] 
          else
-            a.nav__el.nav__el--sign-up(href='/login') Log In
-      
+            a#signup__nav.nav__el.nav__el--sign-up(href='/login') Log In
+   .profile.hidden
+      if user
+         .profile__box--1
+         .profile__box--2
+            p.profile__name= user.firstName + " " + user.lastName
+            p.profile__email= user.email
+            .profile__links
+               a.profile__link(href="#") Manage your Audiophile account
+               a.profile__link.profile__link--signout(href="/account/logout") Sign out
+         .profile__box--3
+            if user.image
+               .profile__img
+                  img(src=`/img/users/user-1.jpg`)
+            else 
+               .profile__userName
+                   p=user.firstName.split("")[0] 
 
-         
-      
+
+
+
+

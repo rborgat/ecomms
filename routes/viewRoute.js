@@ -12,6 +12,8 @@ router.get(
   viewController.productPage
 );
 
+
+router.get("/my-orders", viewController.purchasedProduct);
 router.get("/signup", viewController.signup);
 router.get("/login", viewController.login);
 router.post("/add-to-cart", viewController.addToCart);

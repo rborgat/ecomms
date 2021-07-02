@@ -6,7 +6,7 @@
     border-radius: 1rem;
     padding-left: 3.5rem;
     padding-right: 3.5rem;
-    padding-top: 3.7rem;
+    padding-top: 4rem;
     padding-bottom: 2.5rem;
     margin-top:6rem;;
  
@@ -15,6 +15,7 @@
     @include respond("big-ipad"){
         width: 34rem;
         height: 54rem;
+        margin-top: 8rem;
     }
     @include respond("ipad"){
       width: 32rem;

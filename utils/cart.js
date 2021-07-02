@@ -1,12 +1,14 @@
  const helper = require("./helper")
  class Cart {
-  constructor(items,ids) {
+  constructor(items,ids, orderItems) {
     this.items = items ? items : [];
+ 
     this.totalQuantity = 0; 
     this.totalPrice = 0; 
     this.covertTotal = 0; 
     this.grandTotal = 0; 
     this.ids = ids ? ids: [];  
+    
     
   }
 
@@ -34,8 +36,8 @@
         
       }
       
-   
- 
+      
+    
       this.items.push(newObj); 
  
       
@@ -86,6 +88,9 @@
     this.totalPrice = this.items.reduce((acc, val) => acc + val.cartPrice, 0); 
     this.covertTotal = helper.formatPrice(this.totalPrice); 
     this.grandTotal = helper.formatPrice(this.totalPrice + 50); 
+  
+
+
   }
   calculatePrice(foundItem, quantity, item){
     foundItem.quantity += quantity;

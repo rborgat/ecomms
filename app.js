@@ -71,8 +71,8 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       secure: process.env.NODE_ENV === "production" ? true : false,
-      sameSite: "none",
-      httpOnly: true, 
+      /*   sameSite: "none",
+      httpOnly: true,  */
     },
   })
 );
@@ -93,7 +93,6 @@ app.use("/", viewRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/booking", bookingRouter);
 app.use("/account", userRouter);
-app.use("/order", orderRouter);
 
 // Handling request to incorrect routes
 app.all("*", (req, res, next) => {
