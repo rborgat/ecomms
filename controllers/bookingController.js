@@ -53,7 +53,7 @@ const createNewOrder = catchAsync(async (sessions, req) => {
 
     session["_doc"].session = JSON.stringify(sessionJson);
 
-    await Session.findOneAndUpdate(sessions.client_reference_id, session);
+    await session.save();
   }
 });
 exports.webhookCheckout = (req, res, next) => {
