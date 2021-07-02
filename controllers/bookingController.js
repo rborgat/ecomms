@@ -38,20 +38,26 @@ const createNewOrder = catchAsync(async (sessions, req) => {
   });
 
   if (session) {
-    const sessionJson = JSON.parse(session["_doc"].session);
+    const sessionJson = JSON.parse(session["_doc"]?.session);
 
     await Order.create({
       user: sessionJson?.passport.user,
       products: sessionJson?.cart.ids,
       shippingAddress: sessionJson?.shippingAddress,
-      total: sessionJson.?cart.totalPrice,
+      total: sessionJson?.cart.totalPrice,
       headers: sessionJson,
     });
 
-    delete sessionJson.cart;
-    delete sessionJson.shippingAddress;
 
-    session["_doc"].session = JSON.stringify(sessionJson);
+
+    if(sessionJson){
+
+      delete sessionJson.cart;
+      delete sessionJson.shippingAddress;
+      session["_doc"].session = JSON.stringify(sessionJson);
+    }
+
+   
 
     await Session.findByIdAndUpdate(sessions.client_reference_id, session);
   }
