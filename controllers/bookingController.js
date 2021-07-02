@@ -41,8 +41,8 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     const sessionJson = JSON.parse(session["_doc"].session);
 
     await Order.create({
-      user: sessionJson.passport.user,
-      products: sessionJson.cart.ids,
+      user: sessionJson?.passport.user,
+      products: sessionJson?.cart.ids,
       shippingAddress: sessionJson.shippingAddress,
       total: sessionJson.cart.totalPrice,
       headers: sessionJson,
