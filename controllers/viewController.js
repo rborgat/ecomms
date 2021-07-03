@@ -1,8 +1,8 @@
 const catchAsync = require("../utils/catchAsync");
 const Cart = require("../utils/cart");
 const Product = require("../models/productModel");
+const Order = require("../models/orderModel");
 const AppError = require("../utils/appError");
-
 
 exports.homePage = catchAsync(async (req, res, next) => {
   res.status(200).render("home", {
@@ -42,13 +42,12 @@ exports.productPage = catchAsync(async (req, res, next) => {
 });
 
 exports.checkoutPage = (req, res, next) => {
-  
-  if(!req.user && req.session.cart){
-   return res.redirect("/login"); 
+  if (!req.user && req.session.cart) {
+    return res.redirect("/login");
   }
 
-  if(!req.user || !req.session.cart){
-    return res.redirect("/"); 
+  if (!req.user || !req.session.cart) {
+    return res.redirect("/");
   }
   res.status(200).render("checkout", {
     title: "Checkout",
@@ -56,8 +55,8 @@ exports.checkoutPage = (req, res, next) => {
 };
 
 exports.signup = (req, res, next) => {
-  if(req.user){
-    return  res.redirect("/"); 
+  if (req.user) {
+    return res.redirect("/");
   }
   res.status(200).render("signup", {
     title: "Sign up",
@@ -65,8 +64,8 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  if(req.user){
-   return  res.redirect("/"); 
+  if (req.user) {
+    return res.redirect("/");
   }
   res.status(200).render("login", {
     title: "Log in",
@@ -77,14 +76,13 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   const { id, quantity } = req.body;
   const product = await Product.findById(id);
 
-  const newCart = new Cart(req?.session?.cart?.items ,req?.session.cart?.ids);
+  const newCart = new Cart(req?.session?.cart?.items, req?.session.cart?.ids);
 
   newCart.saveItem(product, id, quantity);
 
-  
   req.session.cart = newCart;
 
-  console.log(req.session.cart)
+  console.log(req.session.cart);
 
   res.status(200).json({
     newCart,
@@ -94,13 +92,12 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 exports.updateCartItem = (req, res, next) => {
   const { id, quantity } = req.body;
 
-  
-  const newCart = new Cart(req.session.cart?.items ,req.session?.cart?.ids);
+  const newCart = new Cart(req.session.cart?.items, req.session?.cart?.ids);
 
   newCart.updateItem(id, quantity);
 
   req.session.cart = newCart;
-  
+
   if (req.session.cart.items.length === 0) {
     delete req.session.cart;
   }
@@ -117,13 +114,12 @@ exports.deleteCart = (req, res, next) => {
 exports.deleteCartItem = (req, res, next) => {
   const id = req.params.id;
 
-  const newCart = new Cart(req.session.cart?.items ,req.session?.cart?.ids);
+  const newCart = new Cart(req.session.cart?.items, req.session?.cart?.ids);
 
   newCart.deleteItem(id);
 
   req.session.cart = newCart;
- 
-  
+
   if (req.session.cart.items.length === 0) {
     delete req.session.cart;
   }
@@ -136,10 +132,11 @@ exports.cart = (req, res, next) => {
   });
 };
 
-exports.purchasedProduct = (req, res, next) => {
+exports.purchasedProduct = catchAsync(async (req, res, next) => {
   
+  const orders = await Order.find({ user: req.user._id }).populate("products");
   res.status(200).render("purchased", {
     title: "My-Orders",
+    orders,
   });
-
-}
+});

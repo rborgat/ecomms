@@ -1,5 +1,6 @@
 const express = require("express");
 const viewController = require("../controllers/viewController");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
@@ -12,8 +13,11 @@ router.get(
   viewController.productPage
 );
 
-
-router.get("/my-orders", viewController.purchasedProduct);
+router.get(
+  "/my-orders",
+  authController.isAuthorized,
+  viewController.purchasedProduct
+);
 router.get("/signup", viewController.signup);
 router.get("/login", viewController.login);
 router.post("/add-to-cart", viewController.addToCart);

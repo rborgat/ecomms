@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const Order = require("../models/orderModel"); 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
@@ -23,6 +24,8 @@ exports.getProduct = catchAsync(async (req, res, next) => {
     product,
   });
 });
+
+
 /* exports.updateProduct = catchAsync(async(req, res, next) => {
     const product = await Product.findByIdAndUpdate({slug: req.params.slug});
 

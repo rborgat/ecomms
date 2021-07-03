@@ -48,3 +48,15 @@
   .alert--error {
     background-color: #eb4d4b;
   }
+
+  .order{
+
+    border-top: 3px solid $color-gold-primary;
+    border-right:3px solid $color-gold-primary; ;
+    border-bottom:3px solid $color-gold-primary; ;
+    padding-bottom: 4rem;;
+
+    section:last-of-type{
+      
+    }
+  }

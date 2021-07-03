@@ -6,9 +6,12 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
-    products: {
-      type: Array,
-    },
+    products: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Product",
+      },
+    ],
     shippingAddress: {
       type: Object,
     },
@@ -26,5 +29,8 @@ const orderSchema = new mongoose.Schema(
 );
 
 const Order = mongoose.model("Order", orderSchema);
+
+
+
 
 module.exports = Order;

@@ -11,27 +11,25 @@ block header
         +navBar
 block content
     main#cart
-        section.cart.content-center
-        - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
-            .carts.content-center
-                h1.heading.heading--secondary.heading--secondary-cart Review your purchased items
-                .cart-header
-
-                #cartItems.cart__items
-                    - if(session.cart)
-                        each product in session.cart.items
-                            .cart-item(data-id=`${product._id}`)
-                                .cart-gallery
-                                    img(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
-                                .cart-description
-                                    .cart-description__name= product.name
-                                    .cart-description__price= product.convertPrice
-                                .cart-item__quantity
-                                    input.item-cart-quantity(type="number" value=`${product.quantity}` min="1")
-                                    a.cart-item__remove-item(href=`/delete-cart-item/${product._id}`) Remove Item
-                -if(session.cart)
-                    #cartInfos.cart__infos
-                        .cart-total.cart-info
-                            p.cart-total__word Total
-                            p.cart-total__total= session.cart.covertTotal
-                 
+        - const arr = ["kakdk", 'adsd']
+        if orders
+            each order in orders
+                section.cart.content-center
+                - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
+                    .carts.content-center.order
+                        h1.heading.heading--secondary.heading--secondary-cart  Order #1
+                        #cart-header.cart-header
+                            h5.heading.heading--senary.heading--senary-checkout= `Total:    $${order.total}`
+                        #cartItems.cart__items
+                            - if(order.products)
+                                each product in order.products
+                                    .cart-item(data-id=`${product._id}`)
+                                        .cart-gallery
+                                            img(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
+                                        .cart-description
+                                            .cart-description__name= product.name
+                                            .cart-description__price= product.convertPrice
+                                        .cart-item__quantity
+                                            input.item-cart-quantity(type="number" value=`${order.orderItems[product._id]}` min="1" disabled)
+ 
+       
