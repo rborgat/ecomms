@@ -1,25 +1,26 @@
 
 #cart{
   padding-top: 7rem;
-  padding-bottom: 15rem;
+  padding-bottom: 7rem;
 }
 .cart {
   background-color: $color-light-primary;
+
  
 }
 
 .carts {
   width: 55%;
-  min-height: 80vh;
   padding-top: 2rem;
 
 
   @include respond("iphone-max"){
     width: 80%;
+
   }
 
   .cart__items {
-    padding-top: 5rem;
+
   }
 
   .cart-item {
@@ -131,6 +132,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 1.4rem;
+    margin-bottom: 3rem;
    
 }
 

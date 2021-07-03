@@ -15,21 +15,21 @@ block content
         if orders
             each order in orders
                 section.cart.content-center
-                - const quantity = session?.cart?.items ? session.cart.totalQuantity: 0
                     .carts.content-center.order
                         h1.heading.heading--secondary.heading--secondary-cart  Order #1
                         #cart-header.cart-header
-                            h5.heading.heading--senary.heading--senary-checkout= `Total:    $${order.total}`
-                        #cartItems.cart__items
+                            h5.heading.heading--senary.heading--senary-checkout= `Total:    ${order.total}`
+                        #cartItems.cart__items(data-id=`${order.orderItems}`)
                             - if(order.products)
                                 each product in order.products
-                                    .cart-item(data-id=`${product._id}`)
+                                    .cart-item
                                         .cart-gallery
                                             img(src=`${product.image.tablet.split("").slice(1).join("")}`, alt=`${product.name} image`)
                                         .cart-description
                                             .cart-description__name= product.name
-                                            .cart-description__price= product.convertPrice
+                                            .cart-description__price= `$ ${product.price}`
                                         .cart-item__quantity
-                                            input.item-cart-quantity(type="number" value=`${order.orderItems[product._id]}` min="1" disabled)
+                                            - const item = order.orderItems.find((obj) => obj.id === product._id); 
+                                            input.item-cart-quantity(type="number" value=`${item.quantity}` min="1" disabled)
  
        
