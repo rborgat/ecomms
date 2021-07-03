@@ -133,8 +133,9 @@ exports.cart = (req, res, next) => {
 };
 
 exports.purchasedProduct = catchAsync(async (req, res, next) => {
-  
+
   const orders = await Order.find({ user: req.user._id }).populate("products");
+
   res.status(200).render("purchased", {
     title: "My-Orders",
     orders,

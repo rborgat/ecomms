@@ -29,7 +29,7 @@ block content
                                             .cart-description__name= product.name
                                             .cart-description__price= `$ ${product.price}`
                                         .cart-item__quantity
-                                            - const item = order.orderItems.find((obj) => obj.id === product._id); 
+                                            - const item = order.orderItems.find((obj) => obj.id === product.id); 
                                             input.item-cart-quantity(type="number" value=`${item.quantity}` min="1" disabled)
  
        
