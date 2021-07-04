@@ -64,6 +64,7 @@ const createNewOrder = catchAsync(async (sessions, req) => {
         session["_doc"].session = JSON.stringify(sessionJson);
 
         await Session.findByIdAndUpdate(sessions.client_reference_id, session);
+        sessions.type = "completed";  
       }
     }
   }
@@ -83,7 +84,7 @@ exports.webhookCheckout = (req, res, next) => {
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
-  if (event.type === "checkout.session.completed") {
+  if (event.type === "checkout.session.async_payment_succeeded") {
     createNewOrder(event.data.object, req.session);
   }
 
