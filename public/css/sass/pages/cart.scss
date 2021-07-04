@@ -2,6 +2,7 @@
 #cart{
   padding-top: 7rem;
   padding-bottom: 7rem;
+  min-height: 80vh;;
 }
 .cart {
   background-color: $color-light-primary;
@@ -30,11 +31,18 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid $color-gray-secondary;
     margin-bottom: 1.5rem;
+
+ 
   }
 
   .cart-gallery {
     width: 15rem;
     height: 15rem;
+
+    @include respond("ipad"){
+      width: 10rem;
+      height: 10rem;
+    }
 
     img {
       width: 100%;
@@ -53,11 +61,23 @@
     padding-bottom: 4rem;
     text-transform: uppercase;
 
+    @include respond("ipad"){
+      font-size: 2rem;
+    }
+
+    @include respond("iphone-max"){
+      font-size: 1.7rem;
+    }
+
     &__price {
       align-self: center;
 
         font-size: 2rem;
         font-weight: initial;
+
+        @include respond("iphone-max"){
+          font-size: 1.5rem;
+        }
     }
   }
 
