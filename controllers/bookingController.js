@@ -50,21 +50,21 @@ const createNewOrder = catchAsync(async (sessions, req) => {
             quantity: obj.quantity,
           };
         });
+
+        await Order.create({
+          user: sessionJson?.passport?.user,
+          products: sessionJson?.cart?.ids,
+          shippingAddress: sessionJson?.shippingAddress,
+          total: sessionJson?.cart?.totalPrice,
+          orderItems: orderItems,
+        });
+
+        delete sessionJson.cart;
+        delete sessionJson.shippingAddress;
+        session["_doc"].session = JSON.stringify(sessionJson);
+
+        await Session.findByIdAndUpdate(sessions.client_reference_id, session);
       }
-
-      await Order.create({
-        user: sessionJson?.passport?.user,
-        products: sessionJson?.cart?.ids,
-        shippingAddress: sessionJson?.shippingAddress,
-        total: sessionJson?.cart?.totalPrice,
-        orderItems: orderItems,
-      });
-
-      delete sessionJson.cart;
-      delete sessionJson.shippingAddress;
-      session["_doc"].session = JSON.stringify(sessionJson);
-
-      await Session.findByIdAndUpdate(sessions.client_reference_id, session);
     }
   }
 });
@@ -85,7 +85,6 @@ exports.webhookCheckout = (req, res, next) => {
 
   if (event.type === "checkout.session.completed") {
     createNewOrder(event.data.object, req.session);
-    delete req.session.cart;
   }
 
   res.status(200).json({ received: true });

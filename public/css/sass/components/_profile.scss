@@ -1,81 +1,78 @@
-.profile{
-    background-color: white;
-    width: 28rem;
-    height: 34rem;
+.profile {
+  background-color: $color-gold-secondary;
+  width: 32rem;
+
+ position: absolute;
+    right: 0;
+  top: 6rem;
+  border-radius: 1rem;
+  color: $color-light-primary; 
+
+  @include respond("big-ipad") {
+    width: 32rem;
+    
+    top: 8rem;
+  
+  }
+  &__box--1 {
+    height: 10rem;
+    background-color: $color-gold-tertiary;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+  }
+
+  &__box--2 {
+    padding-top: 5rem;
+
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0;
+
+  }
+
+  &__email {
+    text-transform: lowercase;
+    font-size: 1.2rem;
+  }
+
+  &__links {
+    padding-top: 3rem;
+  }
+  &__link {
+    font-size: 1.4rem;
+    display: block;
+    text-align: start;
+    color: $color-light-primary; 
+    padding: 1.2rem 1.2rem;
+    transition: all 0.2s;
+    font-weight: 500;
+
+    &--signout {
+     border-bottom-right-radius: 1rem;
+     border-bottom-left-radius: 1rem;
+
+    }
+  }
+
+  &__link:hover,
+  &__link:active {
+    background-color: $color-gold-tertiary;
+    color: $color-gold-primary;
+  }
+  &__box--3 {
     position: absolute;
-    right: 12rem;
-    top: 6rem; 
-    border-radius: 1rem;
-
-
-    @include respond("big-ipad"){
-        width: 32rem;
-        height: 38rem;
-        top: 8rem;
-        right: 2rem;
-    }
-    &__box--1{
-        height: 10rem;;
-        background-color: $color-gold-tertiary;
-        border-top-right-radius: 1rem;
-        border-top-left-radius: 1rem;
-    }
-
-    &__box--2{
-        padding-top:5rem; 
-        height: 100%;
-        text-align: center;
-        font-size: 2.5rem;
-
-    
-    
-    }
-
-    &__email{
-        text-transform: lowercase;
-        font-size: 1.2rem;
-    }
-
-
-    &__links{
-        padding-top: 3rem;;
-       
-    }
-    &__link{
-        font-size: 1.4rem;
-        display: block;
-        text-align: start;
-        color: $color-black-primary;
-        padding: 1.5rem 1.5rem;
-        transition: all .2s;
-        font-weight: 500;
-
-        &--signout{
-            border-bottom-right-radius: 1rem;
-            border-bottom-left-radius: 1rem;
-        }
-    }
-
-    &__link:hover, &__link:active{
-        background-color: $color-gold-tertiary;
-        color: $color-gold-primary; 
-       
-    }
-    &__box--3{
-        position: absolute;
-        background-color: $color-gold-primary; 
-        width: 7rem;
-        height: 7rem;
-        border-radius: 50%;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -20%);
-       
-    }
-    &__userName{
-        @include centerAbsolute;
-        font-size: 3rem;
-        font-weight: 700;
-        color: $color-light-primary; 
-    }
+    background-color: $color-gold-primary;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+  }
+  &__userName {
+    @include centerAbsolute;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $color-light-primary;
+  }
 }

@@ -16,9 +16,9 @@ block content
             each order in orders
                 section.cart.content-center
                     .carts.content-center.order
-                        h1.heading.heading--secondary.heading--secondary-cart  Order #1
+                        h1.heading.heading--secondary.heading--secondary-cart=`Order #${order.id.slice(-8).toUpperCase()}`
                         #cart-header.cart-header
-                            h5.heading.heading--senary.heading--senary-checkout= `Total:    ${order.total}`
+                            h5.heading.heading--senary.heading--senary-checkout= `Total: $${order.total}`
                         #cartItems.cart__items(data-id=`${order.orderItems}`)
                             - if(order.products)
                                 each product in order.products
