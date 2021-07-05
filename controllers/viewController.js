@@ -49,6 +49,7 @@ exports.checkoutPage = (req, res, next) => {
   if (!req.user || !req.session.cart) {
     return res.redirect("/");
   }
+
   res.status(200).render("checkout", {
     title: "Checkout",
   });
@@ -82,7 +83,6 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 
   req.session.cart = newCart;
 
-  console.log(req.session.cart);
 
   res.status(200).json({
     newCart,
