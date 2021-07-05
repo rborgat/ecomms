@@ -22,29 +22,36 @@ block content
                     h6.heading.heading__form-title Billing Details
                     .form__section.form__customer-info.form__wrap
                         .form__group
-                            label(for="name") Name
+                            label.label__input(for="name") Name
+                                span.label-span.hidden can't be empty
                             input.input__class(type="text" id= "name" name="name" required)
                         .form__group
-                            label(for="email") Email Address
-                            input(type="email" id="email" name="email" required)
+                            label.label__input.label__email(for="email") Email Address
+                                span.label-span.hidden.span__email  can't be empty
+                            input.input__class(type="email" id="email" name="email" required)
                         .form__group
-                            label(for="phone") Phone Number
-                            input(type="tel" id="phone" name="phone" placeholder="1(111)-111-1111" required)
+                            label.label__input(for="phone") Phone Number
+                                span.label-span.hidden  can't be empty
+                            input.input__class(type="tel" id="phone" name="phone" placeholder="1(111)-111-1111" required)
                     h6.heading.heading__form-title Shipping Info
                     .form__section.form__address
                         .form__group
-                            label(for="address") Address
-                            input(type="text" id= "address" name="address" requred)
+                            label.label__input(for="address") Address
+                                span.label-span.hidden  can't be empty
+                            input.input__class(type="text" id= "address" name="address" requred)
                     .form__wrap
                         .form__group
-                            label(for="zipcode") Zip Code
-                            input(type="text" id="zipcode" name="zipcode" required)
+                            label.label__input(for="zipcode") Zip Code
+                                span.label-span.hidden  can't be empty
+                            input.input__class(type="text" id="zipcode" name="zipcode" required)
                         .form__group
-                            label(for="city") City 
-                            input(type="text" id="city" name="city" required)
+                            label.label__input(for="city") City 
+                                span.label-span.hidden  can't be empty
+                            input.input__class(type="text" id="city" name="city" required)
                         .form__group
-                            label(for="city") Country 
-                            input(type="text" id="city" name="city" required)
+                            label.label__input(for="country") Country 
+                                span.label-span.hidden  can't be empty
+                            input.input__class(type="text" id="country" name="country" required)
                     <!-- h6.heading.heading__form-title Payment Details
                     .form-payment
                         p.form-payment__method Payment Method

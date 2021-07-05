@@ -6,6 +6,7 @@ import { showAlert } from "./alerts";
 import cartView from "../js/views/cartView";
 import userView from "../js/views/userView";
 import bookingView from "../js/views/bookingView";
+import formView from "../js/views/formView";
 import * as model from "./model";
 
 const controlCompletePayment = async function (customerInfo, data) {
@@ -14,11 +15,22 @@ const controlCompletePayment = async function (customerInfo, data) {
   );
 
   try {
+    formView.removeAlertStyle(); 
     const answer = model.validateForms(data);
 
     if (!answer) {
-      showAlert("error", "Please fill out the form completely");
+      const formData = model.returnForm(data); 
+      formView.addAlertStyle(formData); 
       return;
+    }
+
+    const email = customerInfo.email; 
+  
+    const validateEmail = model.validateEmail(email)
+
+    if(!validateEmail){
+      formView.addEmailAlertStyle();
+      return; 
     }
 
     const session = await axios({

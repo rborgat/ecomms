@@ -13,8 +13,9 @@
   }
   .form {
     &__section {
+      
     }
-    input {
+    .input__class {
       cursor: pointer;
       height: 5rem;
       font-size: 1.6rem;
@@ -22,7 +23,7 @@
       text-transform: capitalize; 
       border-radius: 0.8rem;
       color: $color-black-quaternary;
-      border: 1px solid $color-black-tertiary;
+      border: 2px solid $color-black-tertiary;
       background-color: $color-light-primary;
       outline: none;
       @include respond("ipad"){
@@ -31,11 +32,7 @@
       }
     }
 
-    input:active,
-    input:focus {
-      border-color: $color-alert-primary;
-      color: $color-black-primary;
-    }
+  
 
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -43,16 +40,23 @@
     input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
-
+/* 
     input:focus {
       outline: none;
       border-bottom: 3px solid #55c57a;
     }
     input:focus:invalid {
       border-bottom: 3px solid #ff7730;
-    }
+    } */
     label {
       padding-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+
+      span{
+        font-size: 1.1rem;
+        color: $color-alert-primary;
+      }
     }
     #email{
       text-transform: lowercase;
@@ -98,7 +102,4 @@
   }
 }
 
-input:active,
-input:focus {
-  border-color: red;
-}
+
