@@ -7,6 +7,7 @@ import cartView from "../js/views/cartView";
 import userView from "../js/views/userView";
 import bookingView from "../js/views/bookingView";
 import formView from "../js/views/formView";
+import navView from "../js/views/navView";
 import * as model from "./model";
 
 const controlCompletePayment = async function (customerInfo, data) {
@@ -132,6 +133,9 @@ const init = function () {
   userView.addProfileHandler();
   userView.removeProfile(); 
   bookingView.addHandlerPaybtn(controlCompletePayment);
+  navView.addRemoveLinksHandler(); 
+  navView.displayMinNav(); 
+  navView.addRemoveNavHandler(); 
 };
 
 init();

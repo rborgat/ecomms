@@ -1,6 +1,7 @@
 extends base
 include _navBar
 include _cart
+include _minnav
 
 block overlay
     #overlay.overlay.hidden
@@ -8,6 +9,11 @@ block overlay
 block header
     header.header-product.content-center
         +navBar
+
+block overlay-nav
+    .navigation.hidden
+        +minNav
+
 block content
     main.main-bg-gray
         section.signup

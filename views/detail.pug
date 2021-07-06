@@ -4,10 +4,16 @@ include _alsolike
 include _shop
 include _sectionhome
 include _cart
+include _minnav
 
 block overlay
     .overlay.hidden
         +cart
+
+block overlay-nav
+    .navigation.hidden
+        +minNav
+
 block header
     header.header-product.content-center
         +navBar

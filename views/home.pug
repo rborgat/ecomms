@@ -3,10 +3,18 @@ include _navBar
 include _shop
 include _sectionhome
 include _cart
+include _minnav
+
 
 block overlay
     #overlay.overlay.hidden
         +cart
+
+block overlay-nav
+    .navigation.hidden
+        +minNav
+    
+
 block header
     header.header
         .header__container.content-center
