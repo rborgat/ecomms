@@ -227,7 +227,6 @@ const init = function () {
   cartView.updateCartItem(controlUpdateCartItem);
   userView.addHandlerSignUpForm(controlUserSignUp);
   userView.addProfileHandler();
-  userView.removeProfile();
   userView.addForgotPasswordHandler(controlForgotPassword)
   userView.addResetPasswordKeyPressHandler(controlResetPassword); 
   userView.addResetPasswordClickHandler(controlResetPassword); 
