@@ -14,7 +14,7 @@ class NavView {
     
     }
     addRemoveNavHandler(){
-        document.querySelector(".navigation__img").addEventListener('click', this.removeMinNav)
+        document.querySelector(".navigation__img")?.addEventListener('click', this.removeMinNav)
     }
     addRemoveLinksHandler(){
         document.querySelectorAll(".navigation__item")?.forEach(item => item.addEventListener("click", this.removeMinNav))

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='preconnect' href='https://fonts.gstatic.com')
+        link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap' rel='stylesheet')
+        link(rel='shortcut icon' type='image/png' href='/assets/favicon-32x32.png')
+        script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+        link(rel="stylesheet", href="/bundle/bundle.css")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="https://js.stripe.com/v3/")
+        script(defer src ="/bundle/bundle.js")
+        title Audiophile | #{title}
+    body
+        main.reset.main-bg-gray.main__password
+            .reset__section
+                h1.reset__logo audiophile
+                .reset__container
+                    .reset__content
+                        h6.heading.heading--senary.heading--senary-reset Reset your password
+                        p.reset__text Please enter and confirm your new password. Your password needs to be at least 8 characters. 
+                        .form__group
+                            label.password__reset-label(for="passwordReset") Password
+                                span.label-span.password__reset-span.hidden can't be empty
+                            input.password__reset-input(type="password" id= "passwordReset" name="passwordReset" required minlength="8")
+                        .form__group
+                            label(for="confirmPasswordReset") Confirm your new password
+                                span.label-span.hidden can't be empty
+                            input(type="password" id= "confirmPasswordReset" name="confirmPasswordReset" required minlength="8")
+                        button.btn.btn--password-reset.btn-password-reset Continue
+              
+
+

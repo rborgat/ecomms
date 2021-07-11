@@ -32,9 +32,8 @@ mixin navBar
                p.profile__name= user.firstName + " " + user.lastName
                p.profile__email= user.email
                .profile__links
-                  a.profile__link(href="#") Manage your Audiophile account
                   a.profile__link(href="/my-orders") My orders
-                  a.profile__link.profile__link--signout(href="/account/logout") Sign out
+                  a.profile__link.profile__link--signout(href="/api/v1/users/logout") Sign out
             .profile__box--3
                if user.image
                   .profile__img

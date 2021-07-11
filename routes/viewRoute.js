@@ -20,11 +20,10 @@ router.get(
 );
 router.get("/signup", viewController.signup);
 router.get("/login", viewController.login);
-router.post("/add-to-cart", viewController.addToCart);
-router.post("/update-item", viewController.updateCartItem);
-router.get("/delete-cart-items", viewController.deleteCart);
+router.get("/reset", viewController.forgotPassword);
+router.get("/reset/:token", viewController.resetPassword);
 router.get("/shop/bag", viewController.cart);
 router.get("/shop/checkout", viewController.checkoutPage);
-router.get("/delete-cart-item/:id", viewController.deleteCartItem);
+
 
 module.exports = router;

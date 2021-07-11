@@ -14,12 +14,11 @@ const MongoStore = require("connect-mongo");
 const AppError = require("./utils/appError");
 
 const globalError = require("./controllers/errorController");
-const orderRouter = require("./routes/orderRoute");
 const userRouter = require("./routes/userRoutes");
-const productRouter = require("./routes/productRoutes");
+const viewRouter = require("./routes/viewRoute");
+const cartRouter = require("./routes/cartRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
 const bookingController = require("./controllers/bookingController");
-const viewRouter = require("./routes/viewRoute");
 
 const app = express();
 app.enable("trust proxy");
@@ -70,7 +69,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
-      secure: process.env.NODE_ENV === "production" ? true : false,
+      //secure: process.env.NODE_ENV === "production" ? true : false,
       /*   sameSite: "none",
       httpOnly: true,  */
     },
@@ -90,9 +89,9 @@ app.use(async function (req, res, next) {
 });
 
 app.use("/", viewRouter);
-app.use("/api/v1/products", productRouter);
+app.use("/cart/", cartRouter);
 app.use("/api/v1/booking", bookingRouter);
-app.use("/account", userRouter);
+app.use("/api/v1/users", userRouter);
 
 // Handling request to incorrect routes
 app.all("*", (req, res, next) => {

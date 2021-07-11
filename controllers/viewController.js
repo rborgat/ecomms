@@ -1,15 +1,16 @@
 const catchAsync = require("../utils/catchAsync");
-const Cart = require("../utils/cart");
 const Product = require("../models/productModel");
 const Order = require("../models/orderModel");
 const AppError = require("../utils/appError");
 
+//Rendering Home page
 exports.homePage = catchAsync(async (req, res, next) => {
   res.status(200).render("home", {
     title: "Home Page",
   });
 });
 
+//Rendering product an overview of a product
 exports.overviewPage = catchAsync(async (req, res, next) => {
   const product = await Product.findOne({ slug: req.params.slug });
 
@@ -23,6 +24,7 @@ exports.overviewPage = catchAsync(async (req, res, next) => {
   });
 });
 
+// Function to convert page title to Upper Case
 exports.convertToUpperCase = (req, res, next) => {
   if (req.params.title) {
     let firstLetter = req.params.title.split("")[0].toUpperCase();
@@ -31,6 +33,8 @@ exports.convertToUpperCase = (req, res, next) => {
   }
   next();
 };
+
+//Rendering the product page(s)
 exports.productPage = catchAsync(async (req, res, next) => {
   const products = await Product.find({ category: req.params.title });
 
@@ -41,6 +45,7 @@ exports.productPage = catchAsync(async (req, res, next) => {
   });
 });
 
+//Rendering the checkout page
 exports.checkoutPage = (req, res, next) => {
   if (!req.user && req.session.cart) {
     return res.redirect("/login");
@@ -55,6 +60,16 @@ exports.checkoutPage = (req, res, next) => {
   });
 };
 
+//Rendering the My-orders page
+exports.purchasedProduct = catchAsync(async (req, res, next) => {
+  const orders = await Order.find({ user: req.user._id }).populate("products");
+
+  res.status(200).render("purchased", {
+    title: "My-Orders",
+    orders,
+  });
+});
+//Rendering the sign up page
 exports.signup = (req, res, next) => {
   if (req.user) {
     return res.redirect("/");
@@ -64,6 +79,7 @@ exports.signup = (req, res, next) => {
   });
 };
 
+//Rendering the log in page
 exports.login = (req, res, next) => {
   if (req.user) {
     return res.redirect("/");
@@ -73,71 +89,29 @@ exports.login = (req, res, next) => {
   });
 };
 
-exports.addToCart = catchAsync(async (req, res, next) => {
-  const { id, quantity } = req.body;
-  const product = await Product.findById(id);
-
-  const newCart = new Cart(req?.session?.cart?.items, req?.session.cart?.ids);
-
-  newCart.saveItem(product, id, quantity);
-
-  req.session.cart = newCart;
-
-
-  res.status(200).json({
-    newCart,
+//Rendering the forgot my password page
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  if (req.user) {
+    return res.redirect("/");
+  }
+  res.status(200).render("forgot", {
+    title: "Forgot Password",
   });
 });
 
-exports.updateCartItem = (req, res, next) => {
-  const { id, quantity } = req.body;
-
-  const newCart = new Cart(req.session.cart?.items, req.session?.cart?.ids);
-
-  newCart.updateItem(id, quantity);
-
-  req.session.cart = newCart;
-
-  if (req.session.cart.items.length === 0) {
-    delete req.session.cart;
+//Rendering the reset password page
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  if (req.user) {
+    return res.redirect("/");
   }
-
-  res.status(200).json({
-    newCart,
+  res.status(200).render("reset", {
+    title: "Reset Password",
   });
-};
-exports.deleteCart = (req, res, next) => {
-  delete req.session.cart;
+});
 
-  res.redirect("/shop/bag");
-};
-exports.deleteCartItem = (req, res, next) => {
-  const id = req.params.id;
-
-  const newCart = new Cart(req.session.cart?.items, req.session?.cart?.ids);
-
-  newCart.deleteItem(id);
-
-  req.session.cart = newCart;
-
-  if (req.session.cart.items.length === 0) {
-    delete req.session.cart;
-  }
-
-  res.redirect("/shop/bag");
-};
+//Rendering the cart page
 exports.cart = (req, res, next) => {
   res.status(200).render("cart", {
     title: "Cart",
   });
 };
-
-exports.purchasedProduct = catchAsync(async (req, res, next) => {
-
-  const orders = await Order.find({ user: req.user._id }).populate("products");
-
-  res.status(200).render("purchased", {
-    title: "My-Orders",
-    orders,
-  });
-});

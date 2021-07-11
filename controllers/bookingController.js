@@ -3,6 +3,8 @@ const catchAsync = require("../utils/catchAsync");
 const Order = require("../models/orderModel");
 const Session = require("../models/sessionModel");
 
+
+//Creating a Stripe checkout session
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   req.session.shippingAddress = req.body.customerInfo;
 
@@ -22,16 +24,14 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       },
     ],
   });
-
-  /* if (session.success_url) {
-    delete req.session.cart;
-  } */
   res.status(200).json({
     status: "success",
     session,
   });
 });
 
+
+//Create a new order after payment confirmation
 const createNewOrder = catchAsync(async (sessions, req) => {
   const session = await Session.findOne({
     _id: sessions.client_reference_id,
@@ -69,6 +69,8 @@ const createNewOrder = catchAsync(async (sessions, req) => {
     }
   }
 });
+
+//Listening to purchase confirmation
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers["stripe-signature"];
   console.log(req.headers);

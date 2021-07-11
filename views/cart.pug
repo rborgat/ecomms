@@ -24,7 +24,7 @@ block content
                 .cart-header
                     h5.heading.heading--senary.heading--senary-checkout= `Cart(${quantity})`
                     - if(quantity > 0)
-                        a.cart-remove-items(href="/delete-cart-items") Remove All
+                        a.cart-remove-items(href="/cart/delete-cart-items") Remove All
                 #cartItems.cart__items
                     - if(session.cart)
                         each product in session.cart.items
@@ -36,7 +36,7 @@ block content
                                     .cart-description__price= product.convertPrice
                                 .cart-item__quantity
                                     input.item-cart-quantity(type="number" value=`${product.quantity}` min="1")
-                                    a.cart-item__remove-item(href=`/delete-cart-item/${product._id}`) Remove Item
+                                    a.cart-item__remove-item(href=`/cart/delete-cart-item/${product._id}`) Remove Item
                 -if(session.cart)
                     #cartInfos.cart__infos
                         .cart-total.cart-info

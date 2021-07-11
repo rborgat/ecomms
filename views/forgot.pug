@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='preconnect' href='https://fonts.gstatic.com')
+        link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap' rel='stylesheet')
+        link(rel='shortcut icon' type='image/png' href='/assets/favicon-32x32.png')
+        script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+        link(rel="stylesheet", href="/bundle/bundle.css")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="https://js.stripe.com/v3/")
+        script(defer src ="/bundle/bundle.js")
+        title Audiophile | #{title}
+    body
+        main.reset.main-bg-gray
+            .reset__section
+                h1.reset__logo audiophile
+                .reset__container
+                    .reset__content
+                        h6.heading.heading--senary.heading--senary-reset Reset your password
+                        p.reset__text Enter the email address associated with your account and we'll send you a link to reset your password.   
+                        .form__group
+                            label.reset__label(for="emailPassword") Email
+                                span.reset-span.reset__email.hidden can't be empty
+                            input.reset__input(type="Email" id= "emailPassword" name="emailPassword" required)
+                        button.btn.btn--password-reset.btn-reset Continue
+                        a.reset__link(href="/login") Return to sign in
+                .reset__message.hidden
+                    p.reset__header Thanks, check your email for instructions to reset your password. 
+                    p.reset__text Didn't get the email ? Check your spam folder
+
+

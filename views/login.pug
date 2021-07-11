@@ -19,7 +19,7 @@ block content
       
         section.login
             .login__form
-                form.logins(action='/account/login' method='post')
+                form.logins(action='/api/v1/users/login' method='post')
                     h3.heading.heading--signup.heading--login Log In
                     if messages.error
                         p.alert.alert--error= messages.error
@@ -30,7 +30,7 @@ block content
                         .form__group
                             label(for="password") Password
                             input.input__class(type="password" id= "password" name="password" required)
-                    a.login__forgot-password(href="") Forgot your email or password?
+                    a.login__forgot-password(href="/reset") Forgot your password?
                         button.login__btn(type="submit" value="Log In") Log In
                 .login__noaccount-box
                         p Don't have an account? 

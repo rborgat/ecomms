@@ -59,11 +59,7 @@ const productSchema = new mongoose.Schema({
 productSchema.virtual("formattedPrice").get(function () {
   return helper.formatPrice(this.price);
 });
-/* productSchema.post(/^find/, function (docs, next) {
-  docs.price = helper.formatPrice(docs.price);
 
-  next();
-}); */
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;

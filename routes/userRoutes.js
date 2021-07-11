@@ -1,12 +1,12 @@
 const express = require("express");
 const passport = require("passport");
 const authController = require("../controllers/authController");
-const userController = require("../controllers/userController");
 
 const router = express.Router();
 
 router.post("/register", authController.register);
-//router.post("/login", passport.authenticate("local"), authController.response);
+
+//Login user using passport
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -15,20 +15,10 @@ router.post(
     failureFlash: true,
   })
 );
-router.get("/logout", function (req, res, next) {
-  req.session.destroy();
-  req.logOut();
+router.post("/reset", authController.resetPassword);
+router.post("/forgot-password", authController.forgotPassword);
 
-  res.redirect("/");
-});
 router.use(authController.isAuthorized);
-
-router.post("/update-my-password", authController.updatePassword);
-router.post(
-  "/update-me",
-  userController.uploadUserPhoto,
-  userController.rezizeUserPhoto,
-  userController.updateUser
-);
+router.get("/logout", authController.logOut);
 
 module.exports = router;

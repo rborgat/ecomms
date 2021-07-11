@@ -1,6 +1,5 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const AppError = require("../utils/appError");
 const User = require("../models/userModel");
 
 const verifyUser = async (username, password, done) => {
