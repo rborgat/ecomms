@@ -1,5 +1,5 @@
 class FormView {
-  addAlertStyle(data) {
+  addAlertsStyle(data) {
     const elementsArr = [];
     data.forEach((arr) => {
       const [...input] = document.getElementsByName(arr[0]);
@@ -46,7 +46,10 @@ class FormView {
     const label = document.querySelector(labelClass);
     const span = document.querySelector(spanClass);
 
-    label.classList.add("text-alert");
+      console.log(labelClass)
+      console.log("aldkadsk"); 
+      
+    //label.classList.add("text-alert");
     input.style.borderColor = "#eb4d4b";
     span.textContent = content; 
     span.classList.remove("hidden");

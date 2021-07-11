@@ -22,7 +22,7 @@ const controlCompletePayment = async function (customerInfo, data) {
 
   if (!answer) {
     const formData = model.returnForm(data); 
-    formView.addAlertStyle(formData); 
+    formView.addAlertsStyle(formData); 
     return;
   }
     const email = customerInfo.email; 
