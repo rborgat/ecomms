@@ -9,7 +9,7 @@
     "start:prod": "NODE_ENV=production nodemon server.js",
     "dev:js": "parcel ./public/js/controller.js --out-dir ./public/bundle --out-file bundle.js --public-url .",
     "build:js": "parcel build ./public/js/controller.js --out-dir ./public/bundle --out-file bundle.js --public-url .",
-    "dev:css": "parcel ./public/css/sass/main.scss --out-dir ./public/css/bundle --out-file bundle.css --public-url"
+    "dev:css": "parcel ./public/css/sass/main.scss --out-dir ./public/bundle --out-file bundle.css --public-url ."
   },
   "author": "",
   "license": "ISC",
